@@ -4,8 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="language" content="en_US" />
+  <meta name="language" content="vi_VN" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='1/favicon.ico') }}">
 
   {% include 'layouts/_js_translation.html' %}
   {{ js('js/jquery.min.js') }}
@@ -44,9 +46,11 @@
   {% block body %}{% endblock %}
   </div>
   <div class="container">
-    <footer>
-      <p>© Company 2013</p>
-    </footer>
+    <div class="col-lg-9 col-lg-offset-3" style="margin-top: 20px;">
+      <footer>
+        <p>© vietd 2013</p>
+      </footer>
+    </div>
   </div>
 
   {% if g.user and g.user.has_permission('admin') %}
