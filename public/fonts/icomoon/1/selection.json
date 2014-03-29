@@ -579,6 +579,32 @@
 			},
 			"setIdx": 2,
 			"iconIdx": 396
+		},
+		{
+			"icon": {
+				"paths": [
+					"M896 64h-704c-35.2 0-64 28.8-64 64v256h128v-192h576v704h-576v-192h-128v256c0 35.2 28.798 64 64 64h704c35.2 0 64-28.8 64-64v-832c0-35.2-28.8-64-64-64zM384 832l288-288-288-288v192h-384v192h384z"
+				],
+				"tags": [
+					"enter",
+					"sign in",
+					"log in",
+					"login"
+				],
+				"defaultCode": 58233,
+				"grid": 16,
+				"matchesSearch": true
+			},
+			"properties": {
+				"id": 889,
+				"order": 23,
+				"prevSize": 16,
+				"code": 58233,
+				"name": "enter",
+				"ligatures": ""
+			},
+			"setIdx": 2,
+			"iconIdx": 889
 		}
 	],
 	"height": 1024,

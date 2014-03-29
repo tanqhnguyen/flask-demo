@@ -23,7 +23,9 @@
               </li>
               {% if not g.user %}
               <li>
-                <a href="{{ url_for('site.page', name='login') }}">{{_('Login')}}</a>
+                <a href="{{ url_for('site.page', name='login') }}">
+                  <i class="icon-enter" style="font-size: 21px;"></i>
+                </a>
               </li>
               {% else %}
               <li id="fat-menu" class="dropdown">
