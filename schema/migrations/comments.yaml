@@ -1,0 +1,33 @@
+---
+table: comments
+from: null
+to: tan_1
+depends:
+  - ["articles", tan_4]
+sql: |
+  CREATE TABLE comments (
+      id SERIAL PRIMARY KEY,
+      date_created bigint DEFAULT round((date_part('epoch'::text, now()) * (1000)::double precision)),
+      user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+      article_id INT REFERENCES articles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+      content TEXT,
+      ip TEXT NOT NULL
+  );
+---
+table: comments
+from: tan_1
+to: tan_2
+depends:
+  - ["questions", tan_1]
+  - ["answers", tan_1]
+sql: |
+  ALTER TABLE comments ADD COLUMN answer_id INT REFERENCES answers(id) ON DELETE CASCADE ON UPDATE CASCADE;
+  ALTER TABLE comments ADD COLUMN question_id INT REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE;
+---
+table: comments
+from: tan_2
+to: tan_3
+depends:
+  - ["topics", tan_1]
+sql: |
+  ALTER TABLE comments ADD COLUMN topic_id INT REFERENCES topics(id) ON DELETE CASCADE ON UPDATE CASCADE;

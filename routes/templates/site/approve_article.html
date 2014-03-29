@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container" id="approve-article">
+  <div class="row">
+    <div class="col-lg-11">
+      <div class="js-articles"></div>
+    </div>
+  </div>
+</div>
+
+{% include 'common/article_edit_template.html' %}
+
+<script type="text/template" id="sidebar-action-template">
+<div class="actions">
+<div><i class="icon-pencil js-edit"></i></div>
+<div><i class="icon-checkmark js-approve"></i></div>
+<div><i class="icon-remove js-reject"></i></div>
+</div>
+</script>
+
+<script type="text/template" id="article-template">
+<div class="panel panel-default">
+  <div class="sidebar js-sidebar">
+
+  </div>
+
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="title">
+          <h2 rv-text="model:title"></h2>
+        </div>
+
+        <div class="tags js-tags" rv-html="model:tags | tags"></div>
+
+        <div class="time">
+          (<%= model.moment('date_created').fromNow() %>)
+        </div>
+      </div>
+      <div class="col-lg-4 clearfix">
+        <table class="author">
+          <tr>
+            <td>
+              <div>
+                <div class="name js-author" rv-text="model:user:name"></div>
+                <div class="points" rv-text="model:user:points"></div>
+              </div>
+            </td>
+            <td>
+              <img class="avatar" src="<%= model.get('user').getAvatar(50) %>" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="js-content" rv-html="model:content | markdown"></div>
+  </div>
+</div>
+</script>
+
+{% endblock %}

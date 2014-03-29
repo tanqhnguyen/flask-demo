@@ -1,0 +1,1 @@
+define(["basecollection","models/topic"],function(e,t){return e.extend({model:t})});

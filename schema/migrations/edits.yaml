@@ -1,0 +1,16 @@
+---
+table: edits
+from: null
+to: tan_1
+depends:
+  - ["articles", tan_1]
+sql: |
+  CREATE TABLE edits (
+      id SERIAL PRIMARY KEY,
+      date_created bigint DEFAULT round((date_part('epoch'::text, now()) * (1000)::double precision)),
+      user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+      article_id INT NOT NULL REFERENCES articles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+      reason TEXT,
+      ip TEXT NOT NULL,
+      data JSON
+  );

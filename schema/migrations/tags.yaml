@@ -1,0 +1,36 @@
+---
+table: tags
+from: null
+to: tan_1
+depends:
+  - ["articles", tan_1]
+sql: |
+  CREATE TABLE tags (
+      name VARCHAR(32) NOT NULL,
+      article_id INT NOT NULL REFERENCES articles(id) ON DELETE CASCADE ON UPDATE CASCADE
+  );
+---
+table: tags
+from: tan_1
+to: tan_2
+depends:
+  - ["questions", tan_1]
+sql: |
+  ALTER TABLE tags ADD COLUMN question_id INT REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE;
+  ALTER TABLE tags ALTER COLUMN article_id DROP NOT NULL;
+---
+table: tags
+from: tan_2
+to: tan_3
+depends:
+  - ["topics", tan_1]
+sql: |
+  ALTER TABLE tags ADD COLUMN topic_id INT REFERENCES topics(id) ON DELETE CASCADE ON UPDATE CASCADE;
+---
+table: tags
+from: tan_3
+to: tan_4
+sql: |
+  ALTER TABLE tags ADD COLUMN id SERIAL;
+  UPDATE tags SET id = DEFAULT;
+  ALTER TABLE tags ADD PRIMARY KEY (id);

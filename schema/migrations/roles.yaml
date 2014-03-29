@@ -1,0 +1,17 @@
+---
+table: roles
+from: null
+to: tan_1
+depends:
+  - ["users", tan_1]
+sql: |
+  CREATE TABLE roles (
+      name VARCHAR(256) NOT NULL,
+      user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+  );
+---
+table: roles
+from: tan_1
+to: tan_2
+sql: |
+  ALTER TABLE roles ADD CONSTRAINT unique_user_id UNIQUE(user_id);

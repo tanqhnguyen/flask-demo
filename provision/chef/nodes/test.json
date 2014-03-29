@@ -1,0 +1,46 @@
+{
+  "run_list": ["recipe[apt]", "recipe[git]", "recipe[app]"],
+  "build_essential": {
+    "compiletime": true
+  },
+  "apt": {
+    "compiletime": true
+  },
+  "app" : {
+    "project_dir" : "/vagrant",
+    "user" : "vagrant",
+    "group" : "vagrant"
+  },
+  "nginx": {
+    "sendfile": "off",
+    "gzip": "off"
+  },
+  "sphinx": {
+    "version": "2.1.6",
+    "use_postgres": true,
+    "user": "sphinx",
+    "group": "sphinx",
+    "searchd": {
+      "pid_file": "/var/run/sphinx/sphinx.pid"
+    }
+  },
+  "postgresql": {
+    "apt_distribution": "precise",
+    "version": "9.3"
+  },
+  "redisio": {
+    "version": "2.8.7",
+    "mirror": "http://download.redis.io/releases",
+    "default_settings": {
+      "requirepass": "dev"
+    },
+    "servers": [
+      {"port" : "6379"},
+      {"port" : "6380"},
+      {"port" : "6381"}
+    ]
+  },
+  "nodejs": {
+    "version": "0.10.18"
+  }
+}

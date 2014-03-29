@@ -1,0 +1,1 @@
+define(["marionette.custom","views/common/question","views/common/load_more"],function(e,t,n){var r=e.Layout.extend({template:function(){},events:{},ui:{questions:".js-questions"},initialize:function(){},onRender:function(){this.articlesView=new n({collection:this.collection,el:this.ui.questions,itemView:t}),this.articlesView.render()}});return r});

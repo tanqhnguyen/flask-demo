@@ -1,0 +1,1 @@
+define(["marionette.custom","libs/rivets"],function(e,t){var n=e.ItemView.extend({template:"#article-template",className:"article preview",events:{},initialize:function(){},ui:{tags:".js-tags"},serializeData:function(){return{model:this.model}},onRender:function(){var e=this;t.bind(this.$el,{model:this.model})}});return n});

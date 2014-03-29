@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.articles = {{ articles|to_json }};
+  window.appData.search = "{{ search }}";
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="search">
+  <div class="row">
+
+    <div class="col-lg-3 no-padding-left">
+      
+    </div>
+
+    <div class="col-lg-8">
+      <ul class="nav nav-pills">
+        <li class="active">
+          <a href="#articles" data-toggle="tab" data-type="articles">
+            {{ _('Articles') }}
+            <span class="badge">
+              {{ total_article }}
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#topics" data-toggle="tab" data-type="topics">
+            {{ _('Topics') }}
+            <span class="badge">
+              {{ total_topic }}
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="articles">
+        </div>
+        <div class="tab-pane" id="topics">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'common/article_preview.html' %}
+{% include 'common/topic_preview.html' %}
+
+{% endblock %}

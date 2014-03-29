@@ -1,0 +1,117 @@
+@import 'vendors/bootstrap/mixins.less';
+@import 'vendors/yeti/variables.less';
+@import 'common/variables.less';
+@import 'common/buttons.less';
+@import 'common/icomoon.less';
+@import 'common/mixins.less';
+@import 'vendors/highlight.default.less';
+
+* {
+  
+}
+
+#login {
+  .panel-body {
+    .btn {
+      i {
+        margin-right: 10px;
+        font-size: 25px;
+      }
+      font-size: 18px;
+      display: block;
+      text-align: left;
+      padding-left: 10px;
+    }
+  }
+}
+
+#admin-control {
+  position: fixed;
+  top: 60px;
+  background: #cccccc;
+  height: auto;
+  width: 250px;
+  right: 0px;
+
+  &.admin-hide {
+    right: -250px;
+  }
+
+  .panel {
+    margin-bottom: 0px;
+  }
+
+  #admin-control-trigger {
+    cursor: pointer;
+    top: 10px;
+    background: #cccccc;
+    position: absolute;
+    right: 100%;
+    padding: 10px;
+    font-size: 32px;
+  }
+}
+
+.container {
+  margin: 0px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+
+  .sub-title {
+    h1 {
+      margin: 0px;
+      color: #ffffff;
+    }
+  }
+}
+
+.search-form {
+  form {
+    .no-padding-right;
+    .no-padding-left;
+  }
+}
+
+.latest-articles, .latest-topics {
+  h3 {
+    margin-top: 5px;
+  }
+
+  hr {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .entry {
+    margin: 10px 0px;
+    font-size: 13px;
+  }
+}
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+      border-radius: @nav-pills-border-radius;
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.external > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-pills-active-link-hover-color;
+        background-color: @nav-pills-active-link-hover-bg;
+      }
+    }
+  }
+}

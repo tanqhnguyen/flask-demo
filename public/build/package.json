@@ -1,0 +1,13 @@
+{
+  "name": "build",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-uglify": "latest",
+    "requirejs": "2.1.9",
+    "grunt": "latest"
+  }
+}

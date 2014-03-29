@@ -1,0 +1,55 @@
+.comment {
+  position: relative;
+
+  .actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+
+    .icon-pencil, .icon-remove, .icon-user-block {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+
+  &:hover {
+    .actions {
+      display: block;
+    }
+  }
+
+  .panel {
+    &:hover {
+      background-color: darken(@panel-bg, 3%);
+    }
+
+    margin-bottom: 10px;
+
+    table {
+      td {
+        vertical-align: top;
+
+        &.avatar {
+          width: 50px;
+        }
+
+        &.content {
+          padding-left: 10px;
+          p {
+            word-break: break-word;
+          }
+        }
+      }
+
+      .author {
+        margin-bottom: 5px;
+      }
+
+      .date {
+        color: #cccccc;
+        font-style: italic;
+      }
+    }
+  }
+}

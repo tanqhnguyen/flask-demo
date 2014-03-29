@@ -1,0 +1,1 @@
+define(["underscore.custom","backbone.custom","basecollection"],function(e,t,n){return n.extend({search:function(n){n=n||{};var r=this,i=e.result(this,"url");return t.callApi("GET",[i,"search"].join("/"),n.data).success(function(e){r.setPagination(e.pagination),n.reset?r.reset(e.data):r.push(e.data)})}})});

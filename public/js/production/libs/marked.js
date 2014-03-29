@@ -1,0 +1,1 @@
+define(["vendors/marked","vendors/highlight"],function(e){var t=new e.Renderer;t.heading=function(e,t){return e};var n=new e.Renderer;n.heading=function(e,t){return t<3&&(t=3),"<h"+t+">"+e+"</h"+t+">"};var r={comment:t,article:n};return e.setOptions({sanitize:!0,highlight:function(e){return hljs.highlightAuto(e).value}}),e.getRenderer=function(e){return r[e]},e});

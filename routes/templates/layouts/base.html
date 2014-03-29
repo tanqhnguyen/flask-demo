@@ -1,0 +1,131 @@
+{% from 'macros/tags.html' import css, less, js %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="en_US" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  {% include 'layouts/_js_translation.html' %}
+  {{ js('js/jquery.min.js') }}
+  {{ js('js/bootstrap.min.js') }}
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+  <!-- <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> -->
+  <script type="text/javascript">
+    var btn = $.fn.button.noConflict();
+    var tooltip = $.fn.tooltip.noConflict();
+    $.fn.bsbutton = btn;
+    $.fn.bstooltip = tooltip;
+    window.appData = window.appData || {};
+    {% if g.user %}
+    window.appData.user = {{ g.user.json_data()|to_json }}
+    {% else %}
+    window.appData.user = {};
+    {% endif %}
+  </script>
+  <!-- {{ css('css/bootstrap.min.css') }} -->
+  <!-- {{ css('//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css') }} -->
+  {{ css('css/yeti.min.css') }}
+
+  {% if is_env('production') %}
+  {{ css('css/'+style|default('layout')+'.css') }}
+  {% else %}
+  {{ less('less/'+style|default('layout')+'.less') }}
+  {{ js('js/less.min.js') }}
+  {% endif %}
+
+  <title>{{ title|default('DevZoneVN') }}</title>
+</head>
+
+<body>
+  {% include 'layouts/top_nav.html' %}
+  <div style="min-height: 400px">
+  {% block body %}{% endblock %}
+  </div>
+  <div class="container">
+    <footer>
+      <p>© Company 2013</p>
+    </footer>
+  </div>
+
+  {% if g.user and g.user.has_permission('admin') %}
+  <div id="admin-control" class="panel panel-default admin-hide">
+    <div id="admin-control-trigger">
+      <i class="icon-control"></i>
+    </div>
+
+    {% set menus = [
+      ['approve_article', 'Approve article']
+    ] 
+    %}
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Admin Control</div>
+      <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+          {% for menu in menus %}
+          {% set url = url_for('site.'+menu[0]) %}
+          {% if request.path == url %}
+          <li class="active">
+          {% else %}
+          <li>
+          {% endif %}
+            <a href="{{ url }}">{{ menu[1] }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+      $('#admin-control-trigger').click(function(){
+        $('#admin-control').toggleClass('admin-hide');
+      });
+    });
+  </script>
+  {% endif %}
+
+  {% block js_data %}{% endblock %}
+
+  {% if js_module %}
+    {% if is_env('production') %}
+    {{ js('js/production/require.js') }}
+    {% else %}
+    {{ js('js/dev/require.js') }}
+    {% endif %}
+
+    <script type="text/javascript">
+      $(function(){
+        var configs = {{ config.REQUIREJS_CONFIG|to_json }};
+        delete configs['modules'];
+        configs['deps'] = ['modules/{{ js_module }}'];
+        {% if is_env('production') %}
+        configs['baseUrl'] = '{{ 'js/production'|static }}';
+        {% else %}
+        configs['baseUrl'] = '{{ 'js/dev'|static }}';
+        {% endif %}
+        require.config(configs);         
+      });
+    </script>
+  {% endif %}
+  
+  <!-- crazy shit here -->
+  <div class="modal fade" id="login-dialog" tabindex="-1" role="dialog" aria-labelledby="login-dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="login-dialog">{{ _('Login') }}</h4>
+        </div>
+        <div class="modal-body">
+          {% include 'common/login.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

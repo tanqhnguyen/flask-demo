@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.question = {{ question|to_json }};
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="view-question">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="js-question question detail"></div>
+    </div>
+    <div class="col-lg-3 col-lg-offset-1">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div>
+        <h2>{{ _('Answers') }}</h2>
+        <div class="js-answer-form"></div>
+        <div class="answer-actions clearfix">
+          <div class="pull-left">
+            <button class="btn btn-success btn-sm js-send">{{ _('Send') }}</button>
+          </div>
+          <div class="pull-right">
+            <i class="icon-refresh js-refresh"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="js-answer-list answer-list">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'common/question_template.html' %}
+{% include 'common/comment_template.html' %}
+{% include 'question/answer_template.html' %}
+
+
+{% endblock %}

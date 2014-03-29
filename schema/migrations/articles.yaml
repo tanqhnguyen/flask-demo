@@ -1,0 +1,50 @@
+---
+table: articles
+from: null
+to: tan_1
+depends:
+  - ["users", tan_1]
+sql: |
+  CREATE TABLE articles (
+      id SERIAL PRIMARY KEY,
+      title VARCHAR(256) NOT NULL,
+      date_created bigint DEFAULT round((date_part('epoch'::text, now()) * (1000)::double precision)),
+      user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+      content TEXT NOT NULL
+  );
+---
+table: articles
+from: tan_1
+to: tan_2
+sql: |
+  ALTER TABLE articles ADD COLUMN is_active BOOLEAN DEFAULT false;
+---
+table: articles
+from: tan_2
+to: tan_3
+sql: |
+  ALTER TABLE articles ADD COLUMN points INT DEFAULT 0;
+---
+table: articles
+from: tan_3
+to: tan_4
+sql: |
+  ALTER TABLE articles ADD COLUMN comment_count INT DEFAULT 0;  
+---
+table: articles
+from: tan_4
+to: tan_5
+sql: |
+  ALTER TABLE articles ADD COLUMN ip TEXT;
+---
+table: articles
+from: tan_5
+to: tan_6
+sql: |
+  ALTER TABLE articles ALTER COLUMN ip SET NOT NULL;
+---
+table: articles
+from: tan_6
+to: tan_7
+sql: |
+  ALTER TABLE articles ADD COLUMN view_count INT DEFAULT 0;

@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.articles = {{ articles|to_json }};
+  window.appData.tag = "{{ tag }}";
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="tags">
+
+  <div class="row">
+
+    <div class="col-lg-3 no-padding-left">
+      
+    </div>
+
+    <div class="col-lg-9 no-padding-right">
+      <h2 style="margin-top: 0px;">
+        {{ tag }}
+      </h2>
+
+      <ul class="nav nav-pills">
+        <li class="active">
+          <a href="#articles" data-type="articles" data-toggle="tab">
+            {{ _('Articles') }}
+            <span class="badge">
+              {{ total_article }}
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#topics" data-type="topics" data-toggle="tab">
+            {{ _('Topics') }}
+            <span class="badge">
+              {{ total_topic }}
+            </span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="articles"></div>
+        <div class="tab-pane" id="topics"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% include 'common/article_preview.html' %}
+{% include 'common/topic_preview.html' %}
+
+{% endblock %}

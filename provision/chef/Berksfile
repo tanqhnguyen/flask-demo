@@ -1,0 +1,12 @@
+site :opscode
+
+cookbook 'apt', git: 'https://github.com/opscode-cookbooks/apt.git', tag: '1.10.0'
+cookbook 'build-essential'
+cookbook 'python', '~> 1.4'
+cookbook 'nginx', '~> 1.8'
+cookbook 'postgresql', git: 'https://github.com/laoshanlung/chef-postgresql.git'
+cookbook 'runit'
+cookbook 'git'
+cookbook 'vim'
+cookbook 'sphinx'
+cookbook 'redisio'

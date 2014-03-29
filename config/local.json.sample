@@ -1,0 +1,43 @@
+{
+  "env": "dev",
+  "postgres": {
+    "username": "vagrant",
+    "password": "vagrant",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "vagrant"
+  },
+  "redis": [
+    {
+      "host": "127.0.0.1",
+      "port": 6379,
+      "password": "dev"
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 6380,
+      "password": "dev"
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 6381,
+      "password": "dev"
+    }
+  ],
+  "sphinx": {
+    "host": "127.0.0.1",
+    "port": 9312
+  },
+  "facebook": {
+    "key": "301555496575454",
+    "secret": "289c739c9fc17041b5856532b9cd3f7c"
+  },
+  "google": {
+    "key": "973703703055-2edpmg82gcbhv35j4bq4bbhomjnrfq5l.apps.googleusercontent.com",
+    "secret": "dWR76xaSfEIM-62OIpmld-I4"
+  },
+  "github": {
+    "key": "9f0bcc99dd8dbb5dfb42",
+    "secret": "8596ce1cda8ec9c8f1925779724c2bf494f2c606"
+  }
+}

@@ -1,0 +1,159 @@
+.question {
+  position: relative;
+
+  .title {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    h2 {
+      margin-top: 0px;
+    }
+  }
+
+  .author {
+    float: right;
+
+    .avatar {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .points {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    td {
+      vertical-align: top;
+    }
+  }
+
+  .sidebar {
+    position: absolute;
+    text-align: center;
+    color: #dddddd;
+    margin-left: 100%;
+    width: auto;
+    min-width: 50px;
+    left: 5px;
+
+    .votes {
+      font-size: 32px;
+      margin-bottom: 10px;
+      .vote-count {
+        margin: 5px 0px;
+      }
+
+      .icon-arrow-up, .icon-arrow-down {
+        cursor: pointer;
+      }
+
+      .icon-arrow-up {
+        &:hover, &.voted {
+          color: @brand-success;
+        }
+      }
+
+      .icon-arrow-down {
+        &:hover, &.voted {
+          color: @brand-danger;
+        }
+      }
+    }
+
+    .answer-count {
+      cursor: pointer;
+      font-size: 24px;
+      .count {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      &.answered {
+        color: @brand-info;
+      }
+
+      &:hover {
+        color: @brand-info;
+      }
+    }
+  }
+
+  .tags {
+    .label {
+      margin-right: 3px;
+    }
+  }
+
+  .time {
+    margin-top: 5px;
+    line-height: 21px;
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  &.pending {
+    .panel-body {
+      height: 500px;
+      overflow: auto;
+      margin-bottom: 30px;      
+    }
+
+    .sidebar {
+      .actions {
+        div {
+          margin-bottom: 5px;
+        }
+
+        i {
+          color: black;
+          cursor: pointer;
+          font-size: 24px;
+
+          &.icon-pencil {
+            &:hover {
+              color: @brand-primary;
+            }
+          }
+
+
+          &.icon-checkmark {
+            &:hover {
+              color: @brand-success;
+            }
+          }
+
+          &.icon-remove {
+            &:hover {
+              color: @brand-danger;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.preview {
+    .panel-body {
+      display: none;
+    } 
+
+    .sidebar {
+      display: none;
+    }
+  }
+
+  &.detail {
+    .actions {
+      display: none;
+    }
+  }
+}

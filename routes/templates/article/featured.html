@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.articles = {{ articles|to_json }};
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="home">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="js-articles"></div>
+    </div>
+    <div class="col-lg-3 col-lg-offset-1">
+
+    </div>
+  </div>
+</div>
+
+{% include 'common/article_template.html' %}
+
+{% endblock %}

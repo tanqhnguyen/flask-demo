@@ -1,0 +1,1 @@
+define(["underscore.custom","backbone.custom","basemodel","models/user","collections/comments","libs/marked","models/mixins/votable"],function(e,t,n,r,i,s,o){var u=n.extend({url:"questions/answers",relations:{user:r,comments:i},generateContent:function(){return s(this.get("content"),{renderer:s.getRenderer("comment")})}});return e.extend(u.prototype,o),u});

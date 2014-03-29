@@ -1,0 +1,1 @@
+define(["underscore.custom","backbone.custom","models/mixins/moment"],function(e,t,n){var r=t.SuperModel.extend({parse:function(e){return e.data?e.data:e},callApi:function(n,r,i){return i=i||{},r=[e.result(this,"url"),r].join("/"),t.callApi(n,r,i)}});return r.prototype=e.extend(r.prototype,n),r});

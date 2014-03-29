@@ -1,0 +1,27 @@
+<script type="text/template" id="answer-template">
+<div class="row">
+  <div class="col-lg-12">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table>
+          <tbody>
+            <tr>
+              <td class="avatar">
+                <img src="<%= model.get('user').getAvatar(50) %>">
+              </td>
+              <td class="content">
+                <div class="author"><strong><%= model.get('user.name') %></strong></div>
+                <div class="js-content"></div>
+                <div class="date"><%= model.relativeTime('date_created') %></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</script>

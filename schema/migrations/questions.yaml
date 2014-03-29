@@ -1,0 +1,28 @@
+---
+table: questions
+from: null
+to: tan_1
+depends:
+  - ["users", tan_1]
+sql: |
+  CREATE TABLE questions (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(256) NOT NULL,
+    date_created bigint DEFAULT round((date_part('epoch'::text, now()) * (1000)::double precision)),
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    content TEXT NOT NULL
+  );
+---
+table: questions
+from: tan_1
+to: tan_2
+sql: |
+  ALTER TABLE questions ADD COLUMN comment_count INT DEFAULT 0;
+  ALTER TABLE questions ADD COLUMN points INT DEFAULT 0;
+  ALTER TABLE questions ADD COLUMN ip TEXT;
+---
+table: questions
+from: tan_2
+to: tan_3
+sql: |
+  ALTER TABLE questions ADD COLUMN answer_count INT DEFAULT 0;

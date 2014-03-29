@@ -1,0 +1,5 @@
+default[:nodejs][:version] = '0.10.26'
+default[:nodejs][:prefix] = '/usr/local'
+default[:nodejs][:url] = 'http://nodejs.org/dist/v%s/node-v%s.tar.gz'
+default[:nodejs][:user] = 'root'
+default[:nodejs][:group] = 'root'

@@ -1,0 +1,80 @@
+{
+  "paths": {
+    "underscore.custom": "libs/underscore",
+    "backbone.custom": "libs/backbone",
+    "basemodel": "models/base_model",
+    "basecollection": "collections/base_collection",
+    "marionette.custom": "libs/marionette",
+    "backbone.wreqr": "vendors/backbone.wreqr",
+    "backbone.babysitter": "vendors/backbone.babysitter",
+    "backbone": "vendors/backbone",
+    "underscore": "vendors/underscore",
+    "moment": "vendors/moment"
+  },
+  "shim": {
+    "vendors/codemirror": {
+      "exports": "CodeMirror"
+    },
+    "underscore": {
+      "exports": "_"
+    },
+    "backbone": {
+      "deps": [
+        "underscore"
+      ],
+      "exports": "Backbone"
+    },
+    "vendors/moment": {
+      "exports": "moment"
+    },
+    "vendors/less": {
+      "exports": "less"
+    },
+    "vendors/jquery.noty": {
+      "exports": "noty"
+    },
+    "vendors/jquery.noty.top": [
+      "vendors/jquery.noty"
+    ],
+    "vendors/jquery.noty.bootstrap": [
+      "vendors/jquery.noty"
+    ]
+  },
+  "modules": [
+    {
+      "name": "modules/home"
+    },
+    {
+      "name": "modules/topics"
+    },
+    {
+      "name": "modules/view_article",
+      "excludeShallow": [
+        "views/common/article_edit_modal"
+      ]
+    },
+    {
+      "name": "views/common/article_edit_modal",
+      "exclude": [
+        "marionette.custom",
+        "views/common/markdown_editor"
+      ]
+    },
+    {
+      "name": "modules/submit_article"
+    },
+    {
+      "name": "modules/view_topic"
+    },
+    {
+      "name": "modules/create_topic"
+    },
+    {
+      "name": "modules/search"
+    },
+    {
+      "name": "modules/tags"
+    }
+  ],
+  "waitSeconds": 30
+}

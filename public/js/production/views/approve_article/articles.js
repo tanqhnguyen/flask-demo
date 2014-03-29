@@ -1,0 +1,1 @@
+define(["marionette.custom","views/approve_article/article"],function(e,t){var n=e.CollectionView.extend({itemView:t});return n});

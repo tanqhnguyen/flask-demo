@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.articles = {{ articles|to_json }};
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="home">
+
+  <div class="row">
+
+    <div class="col-lg-3 no-padding-left">
+      {% include 'common/latest_topics.html' %}
+    </div>
+
+    <div class="col-lg-9 no-padding-right">
+      <ul class="nav nav-pills">
+        <li class="active">
+          <a href="#" data-order="-date_created" data-toggle="tab">{{ _('Latest') }}</a>
+        </li>
+        <li>
+          <a href="#" data-order="-view_count" data-toggle="tab">{{ _('Most viewed') }}</a>
+        </li>
+        <li>
+          <a href="#" data-order="-comment_count" data-toggle="tab">{{ _('Most commented') }}</a>
+        </li>
+        <li>
+          <a href="#" data-order="-points" data-toggle="tab">{{ _('Most voted') }}</a>
+        </li>
+        <li class="external">
+          <a href="{{ url_for('site.page', name='submit-article') }}">
+            <i class="icon-new" style="margin-right: 10px;"></i>
+            {{ _('Submit article') }}
+          </a>
+        </li>
+      </ul>
+      <div class="js-articles"></div>
+    </div>
+
+  </div>
+
+</div>
+
+{% include 'common/article_preview.html' %}
+
+{% endblock %}

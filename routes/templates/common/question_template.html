@@ -1,0 +1,68 @@
+<script type="text/template" id="question-template">
+<div class="panel panel-default">
+  <div class="sidebar js-sidebar">
+    <div class="votes">
+      <div><i class="icon-arrow-up js-vote-up <%= model.get('user_vote') === true? 'voted' : '' %>"></i></div>
+      <div><span class="vote-count js-vote-points">0</span></div>
+      <div><i class="icon-arrow-down js-vote-down <%= model.get('user_vote') === false? 'voted' : '' %>"></i></div>
+    </div>
+    <div class="answer-count <%= model.get('user_answer') === true? 'answered' : '' %>">
+      <div >
+        <i class="icon-bubble"></i>
+      </div>
+      <span class="count js-answer-count"></span>
+    </div>
+    <div class="participants">
+
+    </div>
+  </div>
+
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="title">
+          <a href="<%= model.get('urls.view') %>" class="js-title">
+
+          </a>
+        </div>
+
+        <div class="tags js-tags"></div>
+
+        <div class="time">
+          (<%= model.moment('date_created').fromNow() %>)
+        </div>
+      </div>
+      <div class="col-lg-4 clearfix">
+        <table class="author">
+          <tr>
+            <td>
+              <div>
+                <div class="name js-author"></div>
+                <div class="points"><%= model.get('user.points') %></div>
+              </div>
+            </td>
+            <td>
+              <img class="avatar" src="<%= model.get('user').getAvatar(50) %>" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12 js-content"></div>
+
+      <div class="js-comment-list col-lg-11 col-lg-offset-1"></div>
+
+      <div class="comment-form clearfix col-lg-11 col-lg-offset-1">
+        <button class="btn btn-primary btn-xs js-show-comment-form pull-right">{{_('add comment')}}</button>
+        <div class="js-comment-form"></div>
+        <div class="pull-right">
+          <button class="btn btn-success btn-xs js-send-comment hide">{{ _('Send') }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</script>

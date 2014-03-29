@@ -1,0 +1,1 @@
+define(["marionette.custom","views/common/edit","forms/question_edit"],function(e,t,n){var r=t.extend({template:"#question-edit-template",formClass:n});return r});

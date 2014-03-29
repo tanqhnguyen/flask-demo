@@ -1,0 +1,1 @@
+define(["views/common/edit_modal","views/common/question_edit"],function(e,t){return e.extend({template:"#question-edit-modal-template",editView:t})});

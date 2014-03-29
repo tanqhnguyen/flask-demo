@@ -1,0 +1,18 @@
+<script type="text/template" id="topic-template">
+  <div class="title">
+    <a href="<%= model.get('urls.view') %>">
+      <h3>
+        <%= model.get('title') %>
+      </h3>
+    </a>
+  </div>
+  <div class="tags js-tags" rv-html="model:tags | tags"></div>
+  <div class="time">
+    <%= model.moment('date_created').fromNow() %> | 
+    <%= model.get('view_count') %> {{ _('views') }} | 
+    <%= model.get('points') %> {{ _('points') }} | 
+    <%= model.get('comment_count') %> {{ _('comments') }} |
+    <%= model.get('user.name') %>
+    </span>
+  </div>
+</script>

@@ -1,0 +1,1 @@
+require(["views/questions/main","collections/questions"],function(e,t){var n=new e({el:"#questions",collection:new t(window.appData.questions)});n.render()});

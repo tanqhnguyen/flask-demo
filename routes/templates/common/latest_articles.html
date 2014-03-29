@@ -1,0 +1,17 @@
+{% if latest_articles %}
+<div class="col-lg-12 latest-articles">
+  <h3>
+  {{ _('Latest articles') }}
+  </h3>
+  <hr>
+  <div>
+    {% for article in latest_articles %}
+    <div class="entry">
+      <a href="{{ article['urls']['view'] }}">
+        {{ article['title'] }}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

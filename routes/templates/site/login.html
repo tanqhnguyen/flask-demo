@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div id="login" class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{ _('Login with') }}</div>
+        <div class="panel-body">
+          {% include 'common/login.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

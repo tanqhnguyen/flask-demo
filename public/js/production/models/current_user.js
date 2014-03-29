@@ -1,0 +1,1 @@
+define(["models/user"],function(e){return new e(window.appData.user)});

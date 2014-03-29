@@ -1,0 +1,48 @@
+<script type="text/template" id="comment-template">
+<div class="panel panel-default">
+  <div class="actions">
+    <% if (model.allowDelete()) { %>
+    <i class="icon-remove js-delete"></i>
+    <% } %>
+
+    <% if (_.hasPermission('ban_user')) { %>
+    <i class="icon-user-block js-block"></i>
+    <% } %>
+  </div>
+  <div class="panel-body">
+    <table>
+      <tbody>
+        <tr>
+          <td class="avatar">
+            <img src="<%= model.get('user').getAvatar(50) %>">
+          </td>
+          <td class="content">
+            <div class="author"><strong><%= model.get('user.name') %></strong></div>
+            <div class="js-content"><%= model.generateContent() %></div>
+            <div class="date"><%= model.relativeTime('date_created') %></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="comment-section-template">
+<div>
+  <h2>{{ _('Comments') }}</h2>
+  <div class="js-comment-form"></div>
+  <div class="comment-actions clearfix">
+    <div class="pull-left">
+      <button class="btn btn-success btn-sm js-send">{{ _('Send') }}</button>
+    </div>
+    <div class="pull-right">
+      <i class="icon-refresh js-refresh"></i>
+    </div>
+  </div>
+</div>
+
+<div class="js-comment-list comment-list">
+
+</div>
+</script>

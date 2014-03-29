@@ -1,0 +1,71 @@
+{% extends 'layouts/base.html' %}
+
+{% block js_data %}
+<script type="text/javascript">
+  window.appData.questions = {{ questions|to_json }};
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container" id="questions">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="js-questions"></div>
+    </div>
+    <div class="col-lg-3">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            {{ _('Featured questions') }}
+          </h4>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            {{ _('Popular questions') }}
+          </h4>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            {{ _('Latest articles') }}
+          </h4>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            {{ _('Latest answers') }}
+          </h4>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% include 'common/question_template.html' %}
+
+{% endblock %}

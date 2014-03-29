@@ -1,0 +1,1 @@
+define(["underscore.custom","vendors/backbone.marionette","models/current_user"],function(e,t,n){return window.currentUser=n,e.extend(t.View.prototype,{runOnce:function(e,t){var n=this;clearTimeout(this.$el.data(this.cid)),this.$el.data(this.cid,setTimeout(function(){e.apply(n)},t))},getOption:function(e){return t.getOption(this,e)}}),t});

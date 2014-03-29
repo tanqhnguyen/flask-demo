@@ -1,0 +1,1 @@
+define(["underscore.custom","backbone.custom","basemodel"],function(e,t,n){var r=n.extend({url:"users",getAvatar:function(e){return e=e||100,[t.apiPrefix,this.url,"avatar"].join("/")+"?id="+this.id+"&size="+e},hasPermission:function(t){var n=this.get("permissions")||[];return e.indexOf(n,t)!=-1},ban:function(){return this.callApi("post","ban",{id:this.id})}});return r});

@@ -1,0 +1,9 @@
+---
+table: permissions
+from: null
+to: tan_1
+sql: |
+  CREATE TABLE permissions (
+      name VARCHAR(256) NOT NULL UNIQUE,
+      parent VARCHAR(256) REFERENCES permissions(name) ON DELETE CASCADE ON UPDATE CASCADE
+  );

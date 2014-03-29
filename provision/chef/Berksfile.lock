@@ -1,0 +1,68 @@
+{
+  "sources": {
+    "apt": {
+      "locked_version": "1.10.0",
+      "git": "https://github.com/opscode-cookbooks/apt.git",
+      "ref": "d4b5912cd8f3e73a417b3b176fb85e37b04993fa"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "python": {
+      "locked_version": "1.4.0"
+    },
+    "nginx": {
+      "locked_version": "1.8.0"
+    },
+    "postgresql": {
+      "locked_version": "0.13.0",
+      "git": "https://github.com/laoshanlung/chef-postgresql.git",
+      "ref": "8525867f4a9e7dc1a49c574ba9b77c7bf1c2c0b3"
+    },
+    "runit": {
+      "locked_version": "1.2.0"
+    },
+    "git": {
+      "locked_version": "2.6.0"
+    },
+    "vim": {
+      "locked_version": "1.0.2"
+    },
+    "sphinx": {
+      "locked_version": "1.0.3"
+    },
+    "redisio": {
+      "locked_version": "1.7.0"
+    },
+    "mongodb": {
+      "locked_version": "0.13.7"
+    },
+    "yum": {
+      "locked_version": "2.3.2"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
+    },
+    "dmg": {
+      "locked_version": "2.0.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "mysql": {
+      "locked_version": "3.0.10"
+    },
+    "openssl": {
+      "locked_version": "1.1.0"
+    },
+    "percona": {
+      "locked_version": "0.14.5"
+    },
+    "ulimit": {
+      "locked_version": "0.3.2"
+    }
+  }
+}

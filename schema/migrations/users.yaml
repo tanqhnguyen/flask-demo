@@ -1,0 +1,51 @@
+---
+table: users
+from: null
+to: tan_1
+sql: |
+  CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      email VARCHAR(128),
+      date_created bigint DEFAULT round((date_part('epoch'::text, now()) * (1000)::double precision)),
+      login_id TEXT NOT NULL,
+      login_type VARCHAR(16) NOT NULL,
+      access_token TEXT,
+      social_data JSON
+  );
+---
+table: users
+from: tan_1
+to: tan_2
+sql: |
+  ALTER TABLE users ADD COLUMN name VARCHAR(128);
+---
+table: users
+from: tan_2
+to: tan_3
+sql: |
+  ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT true;
+---
+table: users
+from: tan_3
+to: tan_4
+sql: |
+  ALTER TABLE users ADD COLUMN avatar TEXT;
+---
+table: users
+from: tan_4
+to: tan_5
+sql: |
+  ALTER TABLE users ADD COLUMN points INT DEFAULT 0;  
+---
+table: users
+from: tan_5
+to: tan_6
+sql: |
+  ALTER TABLE users ALTER COLUMN name TYPE VARCHAR(32);
+---
+table: users
+from: tan_6
+to: tan_7
+sql: |
+  ALTER TABLE users ADD COLUMN is_banned BOOLEAN DEFAULT FALSE;
+  ALTER TABLE users ADD COLUMN ban_reason TEXT;

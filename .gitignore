@@ -1,0 +1,6 @@
+public/build/node_modules
+config/local.json
+draft
+Vagrantfile
+.vagrant
+*.pyc

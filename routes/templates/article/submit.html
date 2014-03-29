@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container" id="submit-article">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <div class="panel panel-warning content-warning">
+        <div class="panel-heading">
+          Lưu ý nội dung
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li>Bài viết phải đầy đủ rõ ràng</li>
+            <li>Chỉ gửi những bài viết mang tính chất hướng dẫn, giới thiệu các công nghệ, thư viện, framework</li>
+            <li>Phải ghi rõ nguồn nếu như bài viết được dịch ra từ ngôn ngữ khác</li>
+            <li>Phải ghi rõ nguồn nếu như bài viết có sử dụng các đoạn code không phải của chính tác giả</li>
+            <li>Tuyệt đối tôn trọng luật bản quyền và sở hữu trí tuệ</li>
+            <li><b>KHÔNG</b> gửi bài viết mang tính chất quảng cáo</li>
+            <li><b>KHÔNG</b> gửi bài viết tìm việc, đăng tuyển lao động</li>
+            <li><b>KHÔNG</b> gửi bài viết liên quan đến tin tức, câu hỏi, tư vấn tâm sinh lý tình cảm</li>
+            <li>Nội dung không phù hợp sẽ bị xoá và tác giả sẽ ra đi trong 3 nốt nhạc</li>
+          </ul>    
+        </div>
+      </div>
+
+      <div class="panel panel-info basic-markdown">
+        <div class="panel-heading">
+          Markdown cơ bản
+        </div>
+        <div class="panel-body">
+          {% include 'common/basic_markdown.html' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="js-article"></div>
+      <div class="actions">
+        <button class="btn btn-primary btn-sm js-submit">{{ _('Submit') }}</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+{% include 'common/article_edit_template.html' %}
+{% endblock %}

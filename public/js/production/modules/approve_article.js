@@ -1,0 +1,1 @@
+require(["views/approve_article/main"],function(e){var t=new e({el:"#approve-article"});t.render()});

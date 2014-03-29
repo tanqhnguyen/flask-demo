@@ -1,0 +1,82 @@
+<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">v{{ config.VERSION }}</a>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <ul class="nav navbar-nav navbar-right account-nav">
+              <li>
+                <a href="{{ url_for('site.page', name='home') }}">
+                  <i class="icon-lamp" style="font-size: 21px;"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ url_for('site.page', name='topics') }}">
+                  <i class="icon-users" style="font-size: 21px;"></i>
+                </a>
+              </li>
+              {% if not g.user %}
+              <li>
+                <a href="{{ url_for('site.page', name='login') }}">{{_('Login')}}</a>
+              </li>
+              {% else %}
+              <li id="fat-menu" class="dropdown">
+                <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-menu" style="font-size: 21px;"></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="{{ url_for('site.page', name='submit-article') }}">
+                      {{ _('Submit article') }}
+                    </a>
+                  </li>
+
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="{{ url_for('site.page', name='create-topic') }}">
+                      {{ _('New topic') }}
+                    </a>
+                  </li>
+
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="{{ url_for('site.page', name='logout') }}">
+                      {{_('Logout')}}
+                    </a>
+                  </li>
+                </ul>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+
+        </div>
+
+        {% include 'common/search_form.html' %}
+      </div>
+
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-lg-10">
+            <span class="js-sub-title navbar-brand sub-title">
+              <h1>{{ sub_title }}</h1>
+            </span>
+          </div>
+
+          <div class="col-lg-2">
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div><!-- /.container -->
+</div>

@@ -1,0 +1,1 @@
+require(["models/question","views/view_question/main"],function(e,t){var n=new t({el:"#view-question",model:new e(window.appData.question)});n.render()});

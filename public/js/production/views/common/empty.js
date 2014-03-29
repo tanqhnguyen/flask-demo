@@ -1,0 +1,1 @@
+define(["underscore.custom","marionette.custom","text!templates/common/empty.html"],function(e,t,n){return t.ItemView.extend({template:function(){return e.template(n,{random:e.random(0,3)})}})});

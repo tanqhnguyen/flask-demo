@@ -1,0 +1,1 @@
+define(["basecollection","models/comment"],function(e,t){return e.extend({model:t,url:function(){if(this.article)return"articles/comments";if(this.question)return"questions/comments";if(this.answer)return"questions/answers/comments";if(this.topic)return"topics/comments"},comparator:function(e){return-e.get("date_created")}})});

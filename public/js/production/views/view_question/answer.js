@@ -1,0 +1,1 @@
+define(["marionette.custom","forms/answer_display"],function(e,t){var n=e.ItemView.extend({template:"#answer-template",className:"answer",ui:{content:".js-content"},serializeData:function(){return{model:this.model}},initialize:function(e){this.form=new t({model:this.model})},onRender:function(){this.form.buildControl("content",this.ui.content)}});return n});

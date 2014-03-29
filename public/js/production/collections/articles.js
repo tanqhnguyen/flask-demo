@@ -1,0 +1,1 @@
+define(["basecollection","models/article"],function(e,t){return e.extend({model:t})});

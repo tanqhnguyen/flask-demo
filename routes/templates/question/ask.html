@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container" id="ask-question">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="js-question"></div>
+      <div class="actions">
+        <button class="btn btn-primary btn-sm js-submit">{{ _('Submit') }}</button>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          Lưu ý nội dung
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li>Bài viết phải đầy đủ rõ ràng</li>
+            <li>Chỉ gửi những bài viết mang tính chất hướng dẫn, giới thiệu các công nghệ, thư viện, framework</li>
+            <li>Phải ghi rõ nguồn nếu như bài viết được dịch ra từ ngôn ngữ khác</li>
+            <li>Phải ghi rõ nguồn nếu như bài viết có sử dụng các đoạn code không phải của chính tác giả</li>
+            <li>Tuyệt đối tôn trọng luật bản quyền và sở hữu trí tuệ</li>
+            <li><b>KHÔNG</b> gửi bài viết mang tính chất quảng cáo</li>
+            <li><b>KHÔNG</b> gửi bài viết tìm việc, đăng tuyển lao động</li>
+            <li><b>KHÔNG</b> gửi bài viết liên quan đến tin tức, câu hỏi, tư vấn tâm sinh lý tình cảm</li>
+            <li>Nội dung không phù hợp sẽ bị xoá và tác giả sẽ ra đi trong 3 nốt nhạc</li>
+          </ul>    
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Markdown cơ bản
+        </div>
+        <div class="panel-body">
+          # h1<br/>
+          ## h2<br/>
+          ...<br/>
+          ###### h6<br/>
+          **text** <b>text</b><br/>
+          *text* <i>text</i><br/>
+          <br/>
+          [Link](https://www.google.com)<br/>
+          ![alt text](http://domain.com/image.png)<br/>
+          <br/>
+          ```javascript<br/>
+          var code = 'some code';<br/>
+          ```<br/>
+          <br/>
+          `var code = 'inline code'`</br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'common/question_edit_template.html' %}
+{% endblock %}

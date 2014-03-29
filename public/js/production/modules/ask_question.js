@@ -1,0 +1,1 @@
+require(["views/ask_question/main"],function(e){var t=new e({el:"#ask-question"});t.render()});

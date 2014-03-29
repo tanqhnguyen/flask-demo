@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container" id="create-topic">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <div class="panel panel-warning content-warning">
+        <div class="panel-heading">
+          Lưu ý nội dung
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li><b>KHÔNG</b> gửi bài viết mang tính chất quảng cáo</li>
+            <li><b>KHÔNG</b> gửi bài viết tìm việc, đăng tuyển lao động</li>
+            <li><b>KHÔNG</b> gửi bài viết liên quan đến tin tức, câu hỏi, tư vấn tâm sinh lý tình cảm</li>
+            <li>Nội dung không phù hợp sẽ bị xoá và tác giả sẽ ra đi trong 3 nốt nhạc</li>
+          </ul>    
+        </div>
+      </div>
+
+      <div class="panel panel-info basic-markdown">
+        <div class="panel-heading">
+          Markdown cơ bản
+        </div>
+        <div class="panel-body">
+          # h1<br/>
+          ## h2<br/>
+          ...<br/>
+          ###### h6<br/>
+          **text** <b>text</b><br/>
+          *text* <i>text</i><br/>
+          <br/>
+          [Link](https://www.google.com)<br/>
+          ![alt text](http://domain.com/image.png)<br/>
+          <br/>
+          ```javascript<br/>
+          var code = 'some code';<br/>
+          ```<br/>
+          <br/>
+          `var code = 'inline code'`</br>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-lg-9">
+      <div class="js-topic"></div>
+      <div class="actions">
+        <button class="btn btn-primary btn-sm js-submit">{{ _('Submit') }}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% include 'common/topic_edit_template.html' %}
+{% endblock %}

@@ -1,0 +1,1 @@
+define(["basecollection","models/question"],function(e,t){return e.extend({url:"tags",model:t})});

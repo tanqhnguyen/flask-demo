@@ -1,0 +1,138 @@
+@import 'layout.less';
+@import 'common/markdown_editor.less';
+@import 'common/comment.less';
+@import 'vendors/select2.less';
+
+#view-article {
+  margin-top: 20px;
+}
+
+.article {
+  position: relative;
+
+  .author {
+    .avatar {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .points {
+      text-align: right;
+      margin-right: 10px;
+    } 
+
+    td {
+      vertical-align: top;
+    }
+  }
+
+  .tags {
+    padding: 5px 0px;
+    .label {
+      margin-right: 3px;
+    }
+  }
+
+  .time {
+    line-height: 14px;
+    text-align: right;
+    margin-right: 10px;
+    font-style: italic;
+  }
+
+  .info {
+    .actions {
+      width: auto;
+      margin-top: 10px;
+
+      .votes, .comment-count, .view-count, .edit {
+        display: inline-block;
+        color: #ccc;
+        margin-right: 10px;
+        font-size: 24px;
+      }
+
+      .votes {
+        .vote-count {
+          
+        }
+
+        .icon-arrow-up, .icon-arrow-down {
+          cursor: pointer;
+        }
+
+        .icon-arrow-up {
+          &:hover, &.voted {
+            color: @brand-success;
+          }
+        }
+
+        .icon-arrow-down {
+          &:hover, &.voted {
+            color: @brand-danger;
+          }
+        }
+      }
+
+      .comment-count {
+        .icon-bubble {
+          &:hover, &.commented {
+            color: @brand-info;
+          }
+        }
+      }
+
+      .view-count {
+        .icon-eye {
+          &:hover, &.commented {
+            color: @brand-primary;
+          }
+        }
+      }
+
+      .edit {
+        .icon-pencil {
+          cursor: pointer;
+        }
+
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+
+
+    }
+  }
+}
+
+.comment-actions {
+  margin-top: 10px;
+
+  i {
+    font-size: 24px;
+    margin-left: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: @brand-info;
+    }
+  }
+
+  .comment-count {
+    .count {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}
+
+.comment-list {
+  margin: 20px 0px;
+}
