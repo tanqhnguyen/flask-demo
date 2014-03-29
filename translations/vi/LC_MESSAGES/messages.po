@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vietd 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-01-27 02:24+0000\n"
-"PO-Revision-Date: 2014-01-27 02:46+0000\n"
+"POT-Creation-Date: 2014-03-29 17:18+0000\n"
+"PO-Revision-Date: 2014-03-29 17:17+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: vi <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -17,23 +17,183 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: social_auth/ok.py:3 simple_page/__init__.py:3
-msgid "Hello"
+#: routes/api_articles.py:67
+msgid ""
+"Your article has been submitted successfully. The staff will approve it "
+"soon. Thank you for your contribution"
+msgstr ""
+"Bài viết của bạn đã được gửi. Ban quản trị sẽ đăng bài sau khi kiểm duyệt"
+" xong. Cảm ơn"
+
+#: routes/api_topics.py:53
+msgid ""
+"Your topic has been created successfully. You will be redirected to it "
+"shortly"
+msgstr "Chủ đề của bạn đã được gửi thành công"
+
+#: routes/articles.py:15 routes/articles.py:16
+#: routes/templates/layouts/top_nav.html:37 routes/templates/site/home.html:35
+msgid "Submit article"
+msgstr "Gửi bài"
+
+#: routes/templates/article/submit.html:40 routes/templates/question/ask.html:9
+#: routes/templates/topics/create.html:51
+msgid "Submit"
+msgstr "Gửi"
+
+#: routes/templates/common/article_edit_template.html:21
+msgid "Edit article"
+msgstr "Chỉnh chủ đề"
+
+#: routes/templates/common/article_edit_template.html:27
+#: routes/templates/common/question_edit_template.html:27
+#: routes/templates/common/topic_edit_template.html:27
+msgid "Close"
+msgstr "Đóng"
+
+#: routes/templates/common/article_edit_template.html:28
+#: routes/templates/common/question_edit_template.html:28
+#: routes/templates/common/topic_edit_template.html:28
+#: routes/templates/layouts/_js_translation.html:7
+msgid "Save"
+msgstr "Lưu"
+
+#: routes/templates/common/article_preview.html:15
+#: routes/templates/common/topic_preview.html:12
+msgid "views"
+msgstr "lượt xem"
+
+#: routes/templates/common/article_preview.html:16
+#: routes/templates/common/topic_preview.html:13
+msgid "points"
+msgstr "điểm"
+
+#: routes/templates/common/article_preview.html:17
+#: routes/templates/common/topic_preview.html:14
+msgid "comments"
+msgstr "bình luận"
+
+#: routes/templates/common/comment_template.html:33
+msgid "Comments"
+msgstr "Bình luận"
+
+#: routes/templates/common/comment_template.html:37
+#: routes/templates/common/question_template.html:62
+#: routes/templates/question/view.html:27
+msgid "Send"
+msgstr "Gửi"
+
+#: routes/templates/common/latest_articles.html:4
+#: routes/templates/site/questions.html:44
+msgid "Latest articles"
+msgstr "Bài mới"
+
+#: routes/templates/common/latest_topics.html:4
+msgid "Latest topics"
+msgstr "Chủ đề mới"
+
+#: routes/templates/common/question_edit_template.html:21
+msgid "Edit question"
+msgstr "Chỉnh câu hỏi"
+
+#: routes/templates/common/question_template.html:59
+msgid "add comment"
 msgstr ""
 
-#: simple_page/templates/layouts/top_nav.html:13
+#: routes/templates/common/search_form.html:4
+#: routes/templates/common/search_form.html:7
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: routes/templates/common/topic_edit_template.html:21
+msgid "Edit topic"
+msgstr "Chỉnh chủ đề"
+
+#: routes/templates/layouts/_js_translation.html:5
 msgid "Home"
-msgstr ""
+msgstr "Trang chủ"
 
-#: simple_page/templates/layouts/top_nav.html:15
+#: routes/templates/layouts/_js_translation.html:6
+msgid "Preview"
+msgstr "Xem trước"
+
+#: routes/templates/layouts/_js_translation.html:8
+msgid "at least 1 tag, maxium 5 tags"
+msgstr "ít nhất 1 tag, nhiều nhất 5 tags"
+
+#: routes/templates/layouts/_js_translation.html:9
+msgid "Network Error"
+msgstr "Lỗi đường truyền"
+
+#: routes/templates/layouts/_js_translation.html:10
+msgid "Load More"
+msgstr "Tải thêm"
+
+#: routes/templates/layouts/base.html:120
+#: routes/templates/layouts/top_nav.html:26
 msgid "Login"
-msgstr ""
+msgstr "Đăng nhập"
 
-#: simple_page/templates/layouts/top_nav.html:17
-msgid "My account"
-msgstr ""
+#: routes/templates/layouts/top_nav.html:43
+#: routes/templates/site/topics.html:35
+msgid "New topic"
+msgstr "Gửi chủ đề"
 
-#: simple_page/templates/layouts/top_nav.html:18
+#: routes/templates/layouts/top_nav.html:50
 msgid "Logout"
+msgstr "Đăng xuất"
+
+#: routes/templates/question/view.html:23
+msgid "Answers"
+msgstr "Câu trả lời"
+
+#: routes/templates/site/home.html:21 routes/templates/site/topics.html:21
+msgid "Latest"
+msgstr "Mới nhất"
+
+#: routes/templates/site/home.html:24 routes/templates/site/topics.html:24
+msgid "Most viewed"
+msgstr "Xem nhiều"
+
+#: routes/templates/site/home.html:27 routes/templates/site/topics.html:27
+msgid "Most commented"
+msgstr "Bình luận nhiều"
+
+#: routes/templates/site/home.html:30 routes/templates/site/topics.html:30
+msgid "Most voted"
+msgstr "Điểm cao"
+
+#: routes/templates/site/login.html:8
+msgid "Login with"
+msgstr "Đăng nhập với"
+
+#: routes/templates/site/questions.html:20
+msgid "Featured questions"
 msgstr ""
+
+#: routes/templates/site/questions.html:32
+msgid "Popular questions"
+msgstr ""
+
+#: routes/templates/site/questions.html:56
+msgid "Latest answers"
+msgstr ""
+
+#: routes/templates/site/search.html:22 routes/templates/site/tags.html:27
+msgid "Articles"
+msgstr "Bài viết"
+
+#: routes/templates/site/search.html:31 routes/templates/site/tags.html:35
+msgid "Topics"
+msgstr "Chủ đề"
+
+#: models/user.py:143
+#, python-format
+msgid "Please wait %(time)s seconds before creating new topic"
+msgstr "Vui lòng chờ %(time)s giây"
+
+#: models/mixins/commentable.py:101
+#, python-format
+msgid "Please wait %(time)s seconds before sending new comment"
+msgstr "Vui lòng chờ %(time)s giây"
 

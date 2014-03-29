@@ -1,5 +1,5 @@
 define([
-  'moment'
+  'libs/moment'
 ], function(moment){
   return {
     moment: function(attr) {

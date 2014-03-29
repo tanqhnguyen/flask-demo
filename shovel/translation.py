@@ -18,7 +18,7 @@ def extract():
     cmd.output_file = messages_pot
     cmd.mapping_file = os.path.join('babel.cfg')
     cmd.keywords = "lazy_gettext"
-    cmd.input_dirs = 'simple_page,social_auth,public'
+    cmd.input_dirs = 'simple_page,social_auth,public,routes,models'
 
     cmd.finalize_options()
     cmd.run()
