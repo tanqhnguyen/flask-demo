@@ -1,8 +1,8 @@
 base_path = Dir.pwd
 
 cookbook_path [
-  [base_path, "cookbooks"].join("/"),
-  [base_path, "site-cookbooks"].join("/") 
+  [base_path, "chef", "cookbooks"].join("/"),
+  [base_path, "chef", "site-cookbooks"].join("/") 
 ]
 node_path [base_path, "nodes"].join("/")
 role_path [base_path, "roles"].join("/")
