@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vietd 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-29 17:18+0000\n"
+"POT-Creation-Date: 2014-03-29 17:45+0000\n"
 "PO-Revision-Date: 2014-03-29 17:17+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: vi <LL@li.org>\n"
@@ -129,7 +129,15 @@ msgstr "Lỗi đường truyền"
 msgid "Load More"
 msgstr "Tải thêm"
 
-#: routes/templates/layouts/base.html:120
+#: routes/templates/layouts/base.html:53
+msgid "Term of services"
+msgstr "Điều khoản sử dụng"
+
+#: routes/templates/layouts/base.html:54
+msgid "Privacy"
+msgstr "Thông tin người dùng"
+
+#: routes/templates/layouts/base.html:128
 #: routes/templates/layouts/top_nav.html:26
 msgid "Login"
 msgstr "Đăng nhập"

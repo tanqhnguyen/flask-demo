@@ -45,11 +45,11 @@
   <div style="min-height: 400px">
   {% block body %}{% endblock %}
   </div>
-  <div class="container">
-    <div class="col-lg-9 col-lg-offset-3" style="margin-top: 20px;">
-      <footer>
-        <p>© vietd 2013</p>
-      </footer>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-3 footer no-padding">
+      © vietd 2013 -
+      <a href="{{ url_for('site.page', name='tos') }}">{{ _('Term of services') }}</a> -
+      <a href="{{ url_for('site.page', name='privacy') }}">{{ _('Privacy') }}</a>
     </div>
   </div>
 

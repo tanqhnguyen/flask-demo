@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vietd 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-29 17:18+0000\n"
+"POT-Creation-Date: 2014-03-29 17:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,15 @@ msgstr ""
 msgid "Load More"
 msgstr ""
 
-#: routes/templates/layouts/base.html:120
+#: routes/templates/layouts/base.html:53
+msgid "Term of services"
+msgstr ""
+
+#: routes/templates/layouts/base.html:54
+msgid "Privacy"
+msgstr ""
+
+#: routes/templates/layouts/base.html:128
 #: routes/templates/layouts/top_nav.html:26
 msgid "Login"
 msgstr ""
