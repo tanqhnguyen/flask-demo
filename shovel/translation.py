@@ -7,7 +7,7 @@ import config
 #import config
 
 dist = Distribution(dict(
-        name='DevZoneVN',
+        name='vietd',
         version='0.1'
     ))
 messages_pot = os.path.join('translations', 'messages.pot')

@@ -17,6 +17,6 @@
 # default[:sphinx][:version] = '2.1.6'
 # default[:sphinx][:use_postgres] = true
 
-default[:app][:project_dir] = '/home/devzone/devzone'
-default[:app][:user] = 'devzone'
-default[:app][:group] = 'devzone'
+default[:app][:project_dir] = '/home/vietd/vietd'
+default[:app][:user] = 'vietd'
+default[:app][:group] = 'vietd'

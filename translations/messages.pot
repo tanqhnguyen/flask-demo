@@ -1,12 +1,12 @@
-# Translations template for DevZoneVN.
+# Translations template for vietd.
 # Copyright (C) 2014 ORGANIZATION
-# This file is distributed under the same license as the DevZoneVN project.
+# This file is distributed under the same license as the vietd project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DevZoneVN 0.1\n"
+"Project-Id-Version: vietd 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-01-27 08:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
