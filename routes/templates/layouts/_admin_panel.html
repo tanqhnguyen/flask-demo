@@ -1,0 +1,37 @@
+{% if g.user and g.user.has_permission('admin') %}
+<div id="admin-control" class="panel panel-default admin-hide">
+  <div id="admin-control-trigger">
+    <i class="icon-control"></i>
+  </div>
+
+  {% set menus = [
+    ['approve_article', 'Approve article']
+  ] 
+  %}
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Admin Control</div>
+    <div class="panel-body">
+      <ul class="nav nav-pills nav-stacked">
+        {% for menu in menus %}
+        {% set url = url_for('site.'+menu[0]) %}
+        {% if request.path == url %}
+        <li class="active">
+        {% else %}
+        <li>
+        {% endif %}
+          <a href="{{ url }}">{{ menu[1] }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    $('#admin-control-trigger').click(function(){
+      $('#admin-control').toggleClass('admin-hide');
+    });
+  });
+</script>
+{% endif %}
