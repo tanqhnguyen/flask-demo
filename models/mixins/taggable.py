@@ -2,7 +2,7 @@ from models.database import db_session
 
 from utils import get_remote_side_class, get_remote_side
 
-from cache.taggable import *
+import cache.taggable as cache
 
 class Taggable():
     def create_tags(self, tags, commit=False):

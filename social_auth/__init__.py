@@ -44,7 +44,7 @@ oauth = OAuth(current_app)
 #     }
 #     user = User.create_or_update(**data)
 #     session['user_id'] = user.id
-#     next = request.args.get('next', url_for('site.home'))
+#     next = request.args.get('next', url_for('articles.render_articles'))
 #     return redirect(next)
 
 # @social_auth.route('/auth/facebook')
@@ -97,7 +97,7 @@ def callback_github(resp):
     }
     user = User.create_or_update(**data)
     session['user_id'] = user.id
-    next = request.args.get('next', url_for('site.home'))
+    next = request.args.get('next', url_for('articles.render_articles'))
     return redirect(next)
 
 
@@ -147,7 +147,7 @@ def callback_google(resp):
     user = User.create_or_update(**data)
 
     session['user_id'] = user.id
-    next = request.args.get('state', url_for('site.home'))
+    next = request.args.get('state', url_for('articles.render_articles'))
     return redirect(next)
 
 @google.tokengetter
