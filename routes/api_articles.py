@@ -119,6 +119,10 @@ def approve():
 
     article.update(**data)
     cache.update_article(article.id, article)
+    cache.update_sorted_articles(article, 'comment_count')
+    cache.update_sorted_articles(article, 'date_created')
+    cache.update_sorted_articles(article, 'view_count')
+    cache.update_sorted_articles(article, 'points')
     # also update the user point
     article.user.update_points(up=True, points=25, commit=True)
     return jsonify({"data": article.json_data()})
