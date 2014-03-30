@@ -4,9 +4,31 @@ from decorators import login_required, check_permission, get_article
 from models import Article
 from flask.ext.babel import gettext as _
 
-import cache
+import cache.article as cache
 
 articles = Blueprint('articles', __name__, template_folder="templates")
+
+@articles.route('/')
+@articles.route('/articles.html')
+def render_articles():
+    context = {
+        'js_module': 'articles',
+        'style': 'articles'
+    }
+
+    user = g.user
+
+    articles = cache.get_articles(user=user, sort_by='-date_created')
+
+    # articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
+    # latest_topics = Topic.list_for_user(limit=10, offset=0, user=user)
+    # 
+    latest_topics = []
+
+    context['articles'] = articles
+    context['latest_topics'] = latest_topics
+    return render_template('site/articles.html', **context)
+
 
 @articles.route('/submit-article.html')
 @login_required(next='/submit-article.html')

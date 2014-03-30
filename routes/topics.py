@@ -5,7 +5,25 @@ topics = Blueprint('topics', __name__, template_folder="templates")
 
 from models import Topic
 
-import cache
+import cache.topic as cache
+
+@topics.route('/topics.html')
+def render_topics():
+    context = {
+        'js_module': 'topics',
+        'style': 'topics'
+    }
+
+    user = g.user
+
+    topics = cache.get_topics(user=user, sort_by='-date_created')
+    latest_articles = []
+    
+
+    context['topics'] = topics
+    context['latest_articles'] = latest_articles
+
+    return render_template('site/topics.html', **context)
 
 @topics.route('/create-topic.html')
 @login_required(next='/create-topic.html')

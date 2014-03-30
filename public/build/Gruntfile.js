@@ -10,7 +10,8 @@ var modules = [
   'create_topic',
   'search',
   'tags',
-  'approve_article'
+  'approve_article',
+  'layout'
 ];
 
 var requireOptions = require('../js/build.json')

@@ -2,12 +2,9 @@ from models.database import db_session
 
 from utils import get_remote_side_class, get_remote_side
 
-from models.redis_connection import get_client
+from cache.taggable import *
 
 class Taggable():
-    def _tags_redis_key(self):
-        return ':'.join([self.__tablename__, 'tags', str(self.id)])
-
     def create_tags(self, tags, commit=False):
         if not tags:
             return self
@@ -28,9 +25,7 @@ class Taggable():
             setattr(tag, ref_name, self.id)
             db_session.add(tag)
 
-        key = self._tags_redis_key()
-        redis_client = get_client(key)
-        redis_client.delete(key)
+        cache.delete_tags(self)
 
         if commit:
             db_session.commit()
@@ -40,17 +35,7 @@ class Taggable():
     Gets the tags from redis. If there is no tag stored in redis, fetch it from postgres
     """
     def get_tags(self):
-        key = self._tags_redis_key()
-        redis_client = get_client(key)
-
-        if not redis_client.exists(key):
-            tags = [tag.json_data()['name'] for tag in self.tags]
-            redis_client.sadd(key, *tags)
-            tags = [{"name": tag} for tag in tags]
-        else:
-            tags = redis_client.smembers(key)
-            tags = [{"name": tag} for tag in tags]
-        return tags
+        return cache.get_tags(self)
 
     @classmethod
     def list_by_tag(cls, name, limit=10, offset=0, json=False):

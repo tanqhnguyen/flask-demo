@@ -8,7 +8,7 @@ from models import Comment, Topic, db_session, ModelException
 from forms import TopicForm, CommentForm
 
 import logging
-import cache
+import cache.topic as cache
 
 api_topics = Blueprint('api_topics', __name__)
 

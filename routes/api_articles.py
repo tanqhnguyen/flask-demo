@@ -7,7 +7,7 @@ from models import Article, Comment, db_session, ModelException
 
 from forms import ArticleForm, CommentForm
 
-import cache
+import cache.article as cache
 
 import logging
 

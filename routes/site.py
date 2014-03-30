@@ -2,30 +2,8 @@ from flask import Blueprint, render_template, url_for, g, request, session, redi
 from decorators import login_required, check_permission
 
 from models import Article, Question, Topic
-import cache
 
 site = Blueprint('site', __name__, template_folder="templates")
-
-@site.route('/')
-@site.route('/articles.html')
-def articles():
-    context = {
-        'js_module': 'articles',
-        'style': 'articles'
-    }
-
-    user = g.user
-
-    articles = cache.get_articles(user=user, sort_by='-date_created')
-
-    # articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
-    # latest_topics = Topic.list_for_user(limit=10, offset=0, user=user)
-    # 
-    latest_topics = []
-
-    context['articles'] = articles
-    context['latest_topics'] = latest_topics
-    return render_template('site/articles.html', **context)
 
 @site.route('/questions.html')
 def questions():
@@ -40,24 +18,6 @@ def questions():
 
     context['questions'] = questions
     return render_template('site/questions.html', **context)
-
-@site.route('/topics.html')
-def topics():
-    context = {
-        'js_module': 'topics',
-        'style': 'topics'
-    }
-
-    user = g.user
-
-    topics = cache.get_topics(user=user, sort_by='-date_created')
-    latest_articles = []
-    
-
-    context['topics'] = topics
-    context['latest_articles'] = latest_articles
-
-    return render_template('site/topics.html', **context)
 
 @site.route('/login.html')
 def login():
