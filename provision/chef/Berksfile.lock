@@ -34,8 +34,11 @@
     "redisio": {
       "locked_version": "1.7.0"
     },
-    "mongodb": {
-      "locked_version": "0.13.7"
+    "gunicorn": {
+      "locked_version": "1.1.2"
+    },
+    "supervisor": {
+      "locked_version": "0.4.10"
     },
     "yum": {
       "locked_version": "2.3.2"

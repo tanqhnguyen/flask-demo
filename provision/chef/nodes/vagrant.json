@@ -1,5 +1,5 @@
 {
-  "run_list": ["recipe[apt]", "recipe[git]", "recipe[app]"],
+  "run_list": ["recipe[apt]", "recipe[git]", "recipe[app]", "recipe[app::postgresql]", "recipe[app::sphinx]", "recipe[app::nodejs]"],
   "build_essential": {
     "compiletime": true
   },
@@ -42,5 +42,11 @@
   },
   "nodejs": {
     "version": "0.10.18"
+  },
+  "gunicorn": {
+    "virtualenv": "/vagrant/env",
+    "listen": "0.0.0.0:3000",
+    "worker_processes": 4,
+    "worker_class": "gevent"
   }
 }

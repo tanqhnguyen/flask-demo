@@ -5,3 +5,4 @@ Vagrantfile
 .vagrant
 *.pyc
 .DS_Store
+env

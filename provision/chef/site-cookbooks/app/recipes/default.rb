@@ -14,7 +14,4 @@ include_recipe "app::basic"
 
 include_recipe "app::python"
 include_recipe "app::nginx"
-include_recipe "app::postgresql"
-include_recipe "app::sphinx"
 include_recipe "app::redis"
-include_recipe "app::nodejs"
