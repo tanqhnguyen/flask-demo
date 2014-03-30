@@ -5,6 +5,7 @@ from models import Article
 from flask.ext.babel import gettext as _
 
 import cache.article as cache
+import cache.topic as cache_topic
 
 articles = Blueprint('articles', __name__, template_folder="templates")
 
@@ -23,7 +24,7 @@ def render_articles():
     # articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
     # latest_topics = Topic.list_for_user(limit=10, offset=0, user=user)
     # 
-    latest_topics = []
+    latest_topics = cache_topic.get_topics(user=None, sort_by='-date_created')
 
     context['articles'] = articles
     context['latest_topics'] = latest_topics

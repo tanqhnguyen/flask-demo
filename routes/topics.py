@@ -6,6 +6,7 @@ topics = Blueprint('topics', __name__, template_folder="templates")
 from models import Topic
 
 import cache.topic as cache
+import cache.article as cache_article
 
 @topics.route('/topics.html')
 def render_topics():
@@ -17,8 +18,7 @@ def render_topics():
     user = g.user
 
     topics = cache.get_topics(user=user, sort_by='-date_created')
-    latest_articles = []
-    
+    latest_articles = cache_article.get_articles(user=None, sort_by='-date_created')
 
     context['topics'] = topics
     context['latest_articles'] = latest_articles
