@@ -208,9 +208,6 @@ def search():
 
     result = Article.search(query, offset=offset, limit=limit)
     articles = result.get('data')
-    for article in articles:
-        article.check_vote(g.user)
-        article.check_comment(g.user)
 
     pagination = dict(
         limit=limit,

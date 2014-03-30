@@ -7,11 +7,11 @@ import cache
 site = Blueprint('site', __name__, template_folder="templates")
 
 @site.route('/')
-@site.route('/home.html')
-def home():
+@site.route('/articles.html')
+def articles():
     context = {
-        'js_module': 'home',
-        'style': 'home'
+        'js_module': 'articles',
+        'style': 'articles'
     }
 
     user = g.user
@@ -25,7 +25,7 @@ def home():
 
     context['articles'] = articles
     context['latest_topics'] = latest_topics
-    return render_template('site/home.html', **context)
+    return render_template('site/articles.html', **context)
 
 @site.route('/questions.html')
 def questions():
@@ -50,8 +50,8 @@ def topics():
 
     user = g.user
 
-    topics = Topic.list_for_user(limit=10, offset=0, user=user)
-    latest_articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
+    topics = cache.get_topics(user=user, sort_by='-date_created')
+    latest_articles = []
     
 
     context['topics'] = topics
@@ -71,18 +71,13 @@ def search():
     if len(query) == 0:
         return redirect('/')
 
-    
-
-
     offset = int(request.args.get('offset', 0))
     limit = int(request.args.get('limit', 10))
 
     # search articles
     result = Article.search(query, offset=offset, limit=limit)
     articles = result.get('data')
-    for article in articles:
-        article.check_vote(g.user)
-        article.check_comment(g.user)
+    articles = [article.json_data() for article in articles]
 
     context = {
         'search': query,
@@ -90,7 +85,7 @@ def search():
         'limit': limit,
         'js_module': 'search',
         'style': 'search',
-        'articles': [article.json_data() for article in articles],
+        'articles': articles,
         'total_article': result['raw']['total_found'],
         'total_topic': Topic.count_search(query)
     }
@@ -124,7 +119,7 @@ def tags(name):
 @site.route('/logout.html')
 def logout():
     del session['user_id']
-    return redirect(url_for('site.page', name='home'))
+    return redirect(url_for('site.page', name='articles'))
 
 @site.route('/<name>.html')
 def page(name):

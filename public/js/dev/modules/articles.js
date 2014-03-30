@@ -1,9 +1,9 @@
 require([
-  'views/home/main'
+  'views/articles/main'
   , 'collections/articles'
 ], function(MainView, Articles){
   var view = new MainView({
-    el: '#home',
+    el: '#articles',
     collection: new Articles(window.appData.articles)
   });
 

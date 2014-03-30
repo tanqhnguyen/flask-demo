@@ -3,7 +3,7 @@ define([
   , 'collections/tags'
   , 'models/article'
   , 'models/topic'
-  , 'views/home/article'
+  , 'views/articles/article'
   , 'views/topics/topic'
   , 'views/common/load_more'
 ], function(Marionette, Tags, Article, Topic, ArticleView, TopicView, LoadMoreView){

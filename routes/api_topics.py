@@ -8,6 +8,7 @@ from models import Comment, Topic, db_session, ModelException
 from forms import TopicForm, CommentForm
 
 import logging
+import cache
 
 api_topics = Blueprint('api_topics', __name__)
 
@@ -19,10 +20,9 @@ def list():
     limit = int(request.args.get('limit', 10))
     offset = int(request.args.get('offset', 0))
 
-    order = request.args.get('order', '')
-    order_strings = process_order_input(order)
+    order = request.args.get('order', '-date_created')
 
-    topics = Topic.list_for_user(limit=limit, offset=offset, user=user, order=order_strings)
+    topics = cache.get_topics(user=user, sort_by=order, limit=limit, offset=offset)
     
     pagination = {
         "total": Topic.count(),
@@ -54,7 +54,7 @@ def create():
             )
 
             redirect = topic.get_url('view')
-            
+            cache.update_sorted_topics(topic, 'date_created')
             return jsonify({"data": topic.json_data(), "alert": alert, "redirect": redirect})
         except ModelException, me:
             db_session.rollback()
@@ -96,6 +96,9 @@ def vote():
         data = {
             "points": points
         }
+
+        cache.update_topic(topic.id, topic)
+        cache.update_sorted_topics(topic, 'points')
         return jsonify({"data": data})
     except Exception, e:
         logging.error(e)
@@ -122,6 +125,9 @@ def unvote():
             data = {
                 "points": topic.points
             }
+
+            cache.update_topic(topic.id, topic)
+            cache.update_sorted_topics(topic, 'points')
             return jsonify({"data": data})
         except Exception, e:
             logging.error(e)
@@ -136,10 +142,7 @@ def search():
     offset = int(request.args.get('offset', 0))
 
     result = Topic.search(query, offset=offset, limit=limit)
-    articles = result.get('data')
-    for article in articles:
-        article.check_vote(g.user)
-        article.check_comment(g.user)
+    topics = result.get('data')
 
     pagination = dict(
         limit=limit,
@@ -148,7 +151,7 @@ def search():
     )
 
     return jsonify(dict(
-        data=[article.json_data() for article in articles],
+        data=[topic.json_data() for topic in topics],
         pagination=pagination
     ))
 
@@ -174,6 +177,9 @@ def comment_create():
             topic.update_user_comment_count(user_id=comment.user_id)
 
             db_session.commit()
+
+            cache.update_topic(topic.id, topic)
+            cache.update_sorted_topics(topic, 'comment_count')
             return jsonify({"data": comment.json_data()})
         except ModelException, me:
             db_session.rollback()
@@ -217,6 +223,9 @@ def comment_delete():
             comment.topic.update_user_comment_count(offset=-1, user_id=comment.user_id)
             comment.delete()
             db_session.commit()
+
+            cache.update_topic(comment.topic.id, comment.topic)
+            cache.update_sorted_topics(comment.topic, 'comment_count')
             return json_data(data)
         except Exception:
             db_session.rollback()

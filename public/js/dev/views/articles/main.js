@@ -1,6 +1,6 @@
 define([
   'marionette.custom'
-  , 'views/home/article'
+  , 'views/articles/article'
   , 'views/common/load_more'
 ], function(Marionette, ArticleView, LoadMoreView){
   var View = Marionette.Layout.extend({

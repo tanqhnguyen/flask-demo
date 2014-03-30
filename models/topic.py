@@ -60,6 +60,10 @@ class Topic(Base, Votable, Commentable, Recordable, Taggable, Pointable, Searcha
         return urls
 
     @classmethod
+    def cache_key(cls, id):
+        return ":".join([cls.__tablename__, str(id)])
+
+    @classmethod
     def list(cls, **kwargs):
         json = kwargs.get('json', False)
         order_by = kwargs.get('order', 'date_created DESC')

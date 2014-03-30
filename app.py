@@ -65,6 +65,7 @@ def shutdown_session(exception=None):
 # Setup Jinja
 app.jinja_env.filters['static'] = filters.static
 app.jinja_env.filters['to_json'] = filters.to_json
+app.jinja_env.filters['construct_title'] = filters.construct_title
 
 @app.context_processor
 def setup_env_detect():

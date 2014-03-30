@@ -37,7 +37,7 @@
   {{ js('js/less.min.js') }}
   {% endif %}
 
-  <title>{{ title|default('vietd') }}</title>
+  <title>{{ title|default('')|construct_title }}</title>
 </head>
 
 <body>

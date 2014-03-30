@@ -14,8 +14,7 @@ def submit():
     context = {
         'js_module': 'submit_article',
         'style': 'submit_article',
-        'sub_title': _('Submit article'),
-        'title': _('Submit article')
+        'sub_title': _('Submit article')
     }
     return render_template('article/submit.html', **context)
 
@@ -37,11 +36,10 @@ def featured():
 def view(slug, id):
     article = g.article
     user = g.user
-    
-    # article.check_comment(user)
 
     if article.update_view_count(ip=request.remote_addr, user=user, commit=True):
         cache.update_article(article.id, article)
+        cache.update_sorted_article(article, 'view_count')
 
     article_data = article.json_data()
     article_data['comments'] = article.get_comments(json=True)
@@ -52,7 +50,6 @@ def view(slug, id):
         'js_module': 'view_article',
         'style': 'view_article',
         'article': article_data,
-        'title': article.title,
         'sub_title': article.title
     }
     return render_template('article/view.html', **context)

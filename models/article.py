@@ -112,7 +112,7 @@ class Article(Base, Votable, Commentable, Recordable, Taggable, Pointable, Searc
 
     @classmethod
     def cache_key(cls, id):
-        return ":".join([cls.__tablename__, str(id)])        
+        return ":".join([cls.__tablename__, str(id)])
 
     @classmethod
     def list(cls, **kwargs):
