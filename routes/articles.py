@@ -61,7 +61,7 @@ def view(slug, id):
 
     if article.update_view_count(ip=request.remote_addr, user=user, commit=True):
         cache.update_article(article.id, article)
-        cache.update_sorted_article(article, 'view_count')
+        cache.update_sorted_articles(article, 'view_count')
 
     article_data = article.json_data()
     article_data['comments'] = article.get_comments(json=True)

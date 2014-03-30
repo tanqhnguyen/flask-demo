@@ -3,14 +3,13 @@ from models import db_session, ModelException
 from sqlalchemy import Column, Integer
 from flask.ext.babel import gettext as _
 from utils import hash, get_remote_side, get_remote_side_class, now_ms
-from models.redis_connection import get_client
 
+import cache.commentable as cache
 
-"""
-Provides methods for dealing with comment
-The target table must have a column comment_count INT
-"""
 class Commentable():
+    """Provides methods for dealing with comment
+    The target table must have a column comment_count INT
+    """
     user_comment = False
     
     comment_limit = 30*1000 #ms
@@ -26,17 +25,8 @@ class Commentable():
 
         return self.comment_count 
 
-    def _comment_count_redis_key(self, user_id):
-        return ':'.join([self.__tablename__, str(self.id), 'user_comment_count', str(user_id)])
-
     def update_user_comment_count(self, user_id, offset=1):
-        key = self._comment_count_redis_key(user_id)
-        redis_client = get_client(key)
-        if offset > 0:
-            result = redis_client.incr(key, offset)
-        else:
-            result = redis_client.decr(key, abs(offset))
-        return int(result)
+        return cache.update_user_comment_count(self, user_id, offset)
 
     """
     Determine if user has commented or not
@@ -48,10 +38,8 @@ class Commentable():
         self = cls()
         self.id = article_id
 
-        key = self._comment_count_redis_key(user.id)
-        redis_client = get_client(key)
-
-        if not redis_client.exists(key):
+        count = cache.get_user_comment_count(self, user.id)
+        if not count:
             ref_name = get_remote_side(self, 'comments')
             filter_data = {
                 ref_name: self.id,
@@ -59,11 +47,8 @@ class Commentable():
             }
             cls = get_remote_side_class(self, 'comments')
             count = cls.query.filter_by(**filter_data).count()
-            redis_client.set(key, count)
-        else:
-            count = redis_client.get(key)
+            count = cache.update_user_comment_count(self, user.id, count)
 
-        count = int(count)
         return count > 0
 
     """
@@ -110,9 +95,7 @@ class Commentable():
         comment.ip = hash(ip)
 
         # also update the comment count
-        key = self._comment_count_redis_key(user.id)
-        redis_client = get_client(key)
-        redis_client.incr(key)
+        cache.update_user_comment_count(self, user.id)
 
         db_session.add(comment)
 
