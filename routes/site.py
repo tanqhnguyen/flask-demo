@@ -60,8 +60,14 @@ def login():
 
 @site.route('/search')
 def search():
-    query = request.args.get('query')
+    query = request.args.get('query', '')
     query = query.strip()
+
+    if len(query) == 0:
+        return redirect('/')
+
+    
+
 
     offset = int(request.args.get('offset', 0))
     limit = int(request.args.get('limit', 10))
