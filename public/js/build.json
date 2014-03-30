@@ -42,7 +42,7 @@
   },
   "modules": [
     {
-      "name": "modules/home"
+      "name": "modules/articles"
     },
     {
       "name": "modules/topics"

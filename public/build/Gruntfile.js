@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 
 var modules = [
-  'home',
+  'articles',
   'topics',
   'view_article',
   'submit_article',

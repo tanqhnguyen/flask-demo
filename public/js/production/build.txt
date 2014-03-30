@@ -1,5 +1,5 @@
 
-modules/home.js
+modules/articles.js
 ----------------
 vendors/underscore.js
 vendors/underscore.string.js
@@ -27,12 +27,12 @@ vendors/marked.js
 vendors/highlight.js
 libs/marked.js
 libs/rivets.js
-views/home/article.js
+views/articles/article.js
 text.js
 text!templates/common/empty.html
 views/common/empty.js
 views/common/load_more.js
-views/home/main.js
+views/articles/main.js
 collections/base_collection.js
 models/comment.js
 collections/comments.js
@@ -40,7 +40,7 @@ models/mixins/taggable.js
 models/mixins/votable.js
 models/article.js
 collections/articles.js
-modules/home.js
+modules/articles.js
 
 modules/topics.js
 ----------------
@@ -315,7 +315,7 @@ models/article.js
 models/topic.js
 vendors/rivets.js
 libs/rivets.js
-views/home/article.js
+views/articles/article.js
 views/topics/topic.js
 text.js
 text!templates/common/empty.html
@@ -363,7 +363,7 @@ models/article.js
 models/topic.js
 vendors/rivets.js
 libs/rivets.js
-views/home/article.js
+views/articles/article.js
 views/topics/topic.js
 text.js
 text!templates/common/empty.html
