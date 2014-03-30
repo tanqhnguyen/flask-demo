@@ -1,6 +1,6 @@
 from wtforms import Form, Field, StringField, validators, TextField
 from wtforms.widgets import TextInput
-from flask.ext.babel import gettext as _
+from flask.ext.babel import lazy_gettext as _
 
 class TagsInputField(Field):
     widget = TextInput()

@@ -1,0 +1,1 @@
+define(["moment","vendors/moment.vi"],function(e){return e.lang("vi"),e});

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vietd 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-29 17:45+0000\n"
+"POT-Creation-Date: 2014-03-30 00:23+0000\n"
 "PO-Revision-Date: 2014-03-29 17:17+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: vi <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgid ""
 msgstr "Chủ đề của bạn đã được gửi thành công"
 
 #: routes/articles.py:15 routes/articles.py:16
-#: routes/templates/layouts/top_nav.html:37 routes/templates/site/home.html:35
+#: routes/templates/layouts/top_nav.html:39 routes/templates/site/home.html:35
 msgid "Submit article"
 msgstr "Gửi bài"
 
@@ -109,6 +109,14 @@ msgstr "Tìm kiếm"
 msgid "Edit topic"
 msgstr "Chỉnh chủ đề"
 
+#: routes/templates/layouts/_footer.html:5
+msgid "Term of services"
+msgstr "Điều khoản sử dụng"
+
+#: routes/templates/layouts/_footer.html:6
+msgid "Privacy"
+msgstr "Thông tin người dùng"
+
 #: routes/templates/layouts/_js_translation.html:5
 msgid "Home"
 msgstr "Trang chủ"
@@ -129,25 +137,16 @@ msgstr "Lỗi đường truyền"
 msgid "Load More"
 msgstr "Tải thêm"
 
-#: routes/templates/layouts/base.html:53
-msgid "Term of services"
-msgstr "Điều khoản sử dụng"
-
-#: routes/templates/layouts/base.html:54
-msgid "Privacy"
-msgstr "Thông tin người dùng"
-
-#: routes/templates/layouts/base.html:128
-#: routes/templates/layouts/top_nav.html:26
+#: routes/templates/layouts/_modal.html:6
 msgid "Login"
 msgstr "Đăng nhập"
 
-#: routes/templates/layouts/top_nav.html:43
+#: routes/templates/layouts/top_nav.html:45
 #: routes/templates/site/topics.html:35
 msgid "New topic"
-msgstr "Gửi chủ đề"
+msgstr "Tạo chủ đề"
 
-#: routes/templates/layouts/top_nav.html:50
+#: routes/templates/layouts/top_nav.html:52
 msgid "Logout"
 msgstr "Đăng xuất"
 
@@ -204,4 +203,35 @@ msgstr "Vui lòng chờ %(time)s giây"
 #, python-format
 msgid "Please wait %(time)s seconds before sending new comment"
 msgstr "Vui lòng chờ %(time)s giây"
+
+#: forms/__init__.py:22 forms/__init__.py:50 forms/__init__.py:78
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: forms/__init__.py:24 forms/__init__.py:52 forms/__init__.py:80
+#, python-format
+msgid "%(attribute)s must be between %(min)d and %(max)d characters"
+msgstr "%(attribute)s phải từ %(min)d tới %(max)d kí tự"
+
+#: forms/__init__.py:28 forms/__init__.py:42 forms/__init__.py:56
+#: forms/__init__.py:70 forms/__init__.py:84
+msgid "Content"
+msgstr "Nội dung"
+
+#: forms/__init__.py:30 forms/__init__.py:44 forms/__init__.py:72
+msgid "%(attribute)s is too short"
+msgstr "%(attribute)s quá ngắn"
+
+#: forms/__init__.py:34 forms/__init__.py:62 forms/__init__.py:90
+msgid "Tags"
+msgstr ""
+
+#: forms/__init__.py:36 forms/__init__.py:64 forms/__init__.py:92
+msgid "Must have at least %(min)d tag and maximum %(max)d tags"
+msgstr "Phải có ít nhất %(min)d tag, nhiều nhất %(max)d tags"
+
+#: forms/__init__.py:58 forms/__init__.py:86
+#, python-format
+msgid "%(attribute)s must be from %(min)d characters"
+msgstr "%(attribute)s phải từ %(min)d kí tự"
 

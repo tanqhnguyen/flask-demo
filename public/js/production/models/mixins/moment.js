@@ -1,1 +1,1 @@
-define(["moment"],function(e){return{moment:function(t){return e(this.get(t))},relativeTime:function(t){return e(this.get(t)).fromNow()}}});
+define(["libs/moment"],function(e){return{moment:function(t){return e(this.get(t))},relativeTime:function(t){return e(this.get(t)).fromNow()}}});
