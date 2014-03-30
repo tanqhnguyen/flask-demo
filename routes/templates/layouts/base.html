@@ -21,7 +21,7 @@
     $.fn.bstooltip = tooltip;
     window.appData = window.appData || {};
     {% if g.user %}
-    window.appData.user = {{ g.user.json_data()|to_json }}
+    window.appData.user = {{ g.user.json_data(include_permissions=True)|to_json }}
     {% else %}
     window.appData.user = {};
     {% endif %}

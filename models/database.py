@@ -6,7 +6,7 @@ import config
 connect_string = "postgresql+psycopg2://%s:%s@%s:%s/%s" % (config.POSTGRES['username'], config.POSTGRES['password'], config.POSTGRES['host'], config.POSTGRES['port'], config.POSTGRES['database'])
 
 # config.ENV != 'production'
-engine = create_engine(connect_string, convert_unicode=True, echo=False)
+engine = create_engine(connect_string, convert_unicode=True, echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))

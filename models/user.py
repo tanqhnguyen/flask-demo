@@ -31,14 +31,18 @@ class User(Base, Pointable):
     ban_reason = Column(Text)
     avatar = Column(Text)
 
-    def json_data(self):
-        return {
+    def json_data(self, include_permissions=False):
+        data = {
             "id": self.id,
             "name": self.name,
             "login_type": self.login_type,
-            "points": self.points,
-            "permissions": self.get_permissions()
+            "points": self.points
         }
+
+        if include_permissions:
+            data['permissions'] = self.get_permissions()
+
+        return data
 
     def has_permission(self, name):
         permissions = self.get_permissions()
@@ -83,15 +87,6 @@ class User(Base, Pointable):
         redis_client.delete(key)
         if commit:
             db_session.commit()
-
-
-    """
-    Do some checking to determine if the current user has voted or commented on the article
-    """
-    def check_article(self, article):
-        article.check_vote(self)
-        article.check_comment(self)
-        return article
 
     def check_question(self, question):
         question.check_vote(self)

@@ -49,9 +49,7 @@ class Article(Base, Votable, Commentable, Recordable, Taggable, Pointable, Searc
             "points": self.points,
             "comment_count": self.comment_count,
             "view_count": self.view_count,
-            "urls": self.get_url(),
-            "user_vote": self.user_vote,
-            "user_comment": self.user_comment
+            "urls": self.get_url()
         }
 
     def get_url(self, name=None):
@@ -110,7 +108,11 @@ class Article(Base, Votable, Commentable, Recordable, Taggable, Pointable, Searc
         if has_change:
             self.record(**record_data)
 
-        db_session.commit()  
+        db_session.commit() 
+
+    @classmethod
+    def cache_key(cls, id):
+        return ":".join([cls.__tablename__, str(id)])        
 
     @classmethod
     def list(cls, **kwargs):

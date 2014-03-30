@@ -7,6 +7,8 @@ from models import Article, Comment, db_session, ModelException
 
 from forms import ArticleForm, CommentForm
 
+import cache
+
 import logging
 
 api_articles = Blueprint('api_articles', __name__)
@@ -35,9 +37,12 @@ def list():
     offset = int(request.args.get('offset', 0))
 
     order = request.args.get('order', '-date_created')
-    order_strings = process_order_input(order)
 
-    articles = Article.list_for_user(is_active=is_active, limit=limit, offset=offset, user=user, order=order_strings)
+    if is_active:
+        articles = cache.get_articles(user=user, sort_by=order, limit=limit, offset=offset)
+    else:
+        order_strings = process_order_input(order)
+        articles = Article.list(is_active=is_active, limit=limit, offset=offset, order=order_strings, json=True)
     
     pagination = {
         "total": Article.count(),

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, url_for, g, request, session, redi
 from decorators import login_required, check_permission
 
 from models import Article, Question, Topic
+import cache
 
 site = Blueprint('site', __name__, template_folder="templates")
 
@@ -15,8 +16,12 @@ def home():
 
     user = g.user
 
-    articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
-    latest_topics = Topic.list_for_user(limit=10, offset=0, user=user)
+    articles = cache.get_articles(user=user, sort_by='-date_created')
+
+    # articles = Article.list_for_user(is_active=True, limit=10, offset=0, user=user)
+    # latest_topics = Topic.list_for_user(limit=10, offset=0, user=user)
+    # 
+    latest_topics = []
 
     context['articles'] = articles
     context['latest_topics'] = latest_topics

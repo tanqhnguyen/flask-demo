@@ -35,14 +35,22 @@ class Votable():
         redis_client = get_client(key)
         redis_client.set(key, self._vote_value_for_redis(vote))
 
-    """
-    Determine if user_id has voted or not
-    """
-    def check_vote(self, user):
+    @classmethod
+    def check_vote(cls, user, article_id):
+        """Determine if user_id has voted or not
+        Args:
+            user (User): the current user
+        Returns:
+            None if the user has not voted yet
+            True if the user has up-voted
+            False if the user has down-voted
+        """
+        self = cls()
+        self.id = article_id
+        
         ref_name = get_remote_side(self, 'votes')
         if not user:
-            self.user_vote = None
-            return self.user_vote
+            return None
         
         key = self._user_vote_redis_key(user.id)
         redis_client = get_client(key)
@@ -56,16 +64,16 @@ class Votable():
             vote = cls.query.filter_by(**filter_data).first()
 
             if vote:
-                self.user_vote = vote.up
+                user_vote = vote.up
             else:
-                self.user_vote = None
+                user_vote = None
 
             redis_client.set(key, self._vote_value_for_redis(vote))
         else:
             value = int(redis_client.get(key))
-            self.user_vote = self._parse_vote_value_from_redis(value)
+            user_vote = self._parse_vote_value_from_redis(value)
 
-        return self.user_vote
+        return user_vote
 
     def vote(self, user, ip, up=True, commit=False):
         ref_name = get_remote_side(self, 'votes')
