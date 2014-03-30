@@ -101,6 +101,7 @@ def update():
             pass
 
         article.update(**data)
+        cache.update_article(article.id, article)
         return jsonify({"data": article.json_data()})
     else:
         return json_error(type="VALIDATION_FAILED", messages=form.errors)
@@ -117,6 +118,7 @@ def approve():
     data['is_active'] = True
 
     article.update(**data)
+    cache.update_article(article.id, article)
     # also update the user point
     article.user.update_points(up=True, points=25, commit=True)
     return jsonify({"data": article.json_data()})
@@ -159,6 +161,9 @@ def vote():
         data = {
             "points": points
         }
+
+        cache.update_article(article.id, article)
+        cache.update_sorted_articles(article, 'points')
         return jsonify({"data": data})
     except Exception, e:
         logging.error(e)
@@ -185,6 +190,9 @@ def unvote():
             data = {
                 "points": article.points
             }
+
+            cache.update_article(article.id, article)
+            cache.update_sorted_articles(article, 'points')
             return jsonify({"data": data})
         except Exception, e:
             logging.error(e)
@@ -237,6 +245,9 @@ def comment_create():
             article.update_user_comment_count(user_id=comment.user_id)
 
             db_session.commit()
+
+            cache.update_article(article.id, article)
+            cache.update_sorted_articles(article, 'comment_count')
             return jsonify({"data": comment.json_data()})
         except ModelException, me:
             db_session.rollback()
@@ -280,6 +291,9 @@ def comment_delete():
             comment.article.update_user_comment_count(offset=-1, user_id=comment.user_id)
             comment.delete()
             db_session.commit()
+
+            cache.update_article(comment.article.id, comment.article)
+            cache.update_sorted_articles(comment.article, 'comment_count')
             return json_data(data)
         except Exception:
             db_session.rollback()

@@ -41,9 +41,12 @@ class Commentable():
     """
     Determine if user has commented or not
     """
-    def check_comment(self, user):
+    @classmethod
+    def check_comment(cls, user, article_id):
         if not user:
             return None
+        self = cls()
+        self.id = article_id
 
         key = self._comment_count_redis_key(user.id)
         redis_client = get_client(key)
@@ -61,8 +64,7 @@ class Commentable():
             count = redis_client.get(key)
 
         count = int(count)
-        self.user_comment = count > 0
-        return self.user_comment
+        return count > 0
 
     """
     Get comments of the article

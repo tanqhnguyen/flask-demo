@@ -4,6 +4,8 @@ from decorators import login_required, check_permission, get_article
 from models import Article
 from flask.ext.babel import gettext as _
 
+import cache
+
 articles = Blueprint('articles', __name__, template_folder="templates")
 
 @articles.route('/submit-article.html')
@@ -35,13 +37,17 @@ def featured():
 def view(slug, id):
     article = g.article
     user = g.user
-    article.check_vote(user)
-    article.check_comment(user)
+    
+    # article.check_comment(user)
 
-    article.update_view_count(ip=request.remote_addr, user=user, commit=True)
+    if article.update_view_count(ip=request.remote_addr, user=user, commit=True):
+        cache.update_article(article.id, article)
 
     article_data = article.json_data()
     article_data['comments'] = article.get_comments(json=True)
+    article_data['user_vote'] = Article.check_vote(user, article.id)
+    article_data['user_comment'] = Article.check_comment(user, article.id)
+
     context = {
         'js_module': 'view_article',
         'style': 'view_article',

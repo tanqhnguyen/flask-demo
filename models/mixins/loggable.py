@@ -25,13 +25,23 @@ class Loggable():
         redis_client.zadd(key, now_ms(), self.id)
 
     def update_view_count(self, ip, user=None, commit=False):
+        """Updates the view count of the entry. The view count is only updated once very 2 hours to avoid duplication
+        Args:
+            ip (str): an ip address of the current user_id
+            user (User): the current user (None if it is a guest)
+            commit (bool): whether to commit changes
+        Returns
+            True if view_count is updated
+            False otherwise
+        """
+        updated = False
         last_view = self._last_ip_view(hash(ip))
         threshold = 2*3600*1000 # update view_count once very 2 hours
         diff = now_ms() - last_view
         if diff == 0 or diff > threshold:
             cls = self.__class__
             self.query.filter_by(id=self.id).update({cls.view_count: cls.view_count + 1})
-
+            updated = True
             if commit:
                 db_session.commit()
 
@@ -39,4 +49,4 @@ class Loggable():
         if user is not None:
             self._update_user_view_log(user.id)
 
-        return self.view_count
+        return updated

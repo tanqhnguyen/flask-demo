@@ -83,3 +83,30 @@ def get_article(id, user=None):
     article['user_vote'] = Article.check_vote(user, article['id'])
 
     return article
+
+def update_article(id, article=None):
+    """Updates the cache of article :id
+    Args:
+        id (int): article id
+        article (Article): if not provided, an article will be queried from postgresql
+    Returns:
+        Article
+    """
+    id = int(id)
+    if not article:
+        article = Article.find_by_pk(id)
+
+    if article:
+        key = Article.cache_key(id)
+        redis_client = get_client(key)
+        data = article.json_data()
+        redis_client.set(key, json.dumps(data))
+
+    return article
+
+def update_sorted_articles(article, sort_by):
+    key = _generate_articles_key(sort_by)
+    redis_client = get_client(key)
+    data = dict()
+    data[str(article.id)] = getattr(article, sort_by)
+    redis_client.zadd(key, **data)
